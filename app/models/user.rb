@@ -5,20 +5,25 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook]
 
 
+
   def self.find_for_facebook_oauth(auth)
     Rails.logger.debug auth
-    Rails.logger.debug auth.info.birthday
-    Rails.logger.debug auth.extra.birthday
-    Rails.logger.debug auth.birthday
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
+    u = User.where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider   = auth.provider
       user.uid        = auth.uid
-      user.email      = auth.info.email
-      user.name       = auth.info.name   # assuming the user model has a name
-      user.image      = auth.info.image # assuming the user model has an image
-      # user.json       = {
-      #   :gender => auth.info.gender
-      # }
     end
+
+    u.email         = auth.info.email
+    u.name          = auth.info.name   
+    u.image         = auth.info.image 
+
+    u.json          = "{}" if u.json.nil?
+    json = JSON.parse( u.json )
+    json[:gender]   = auth.extra.raw_info.gender
+    json[:age]      = ( (Date.today - Date.parse( auth.extra.raw_info.birthday )).to_i / 365 )
+    u.json          = json.to_json
+    u.save
+    u
+
   end
 end
