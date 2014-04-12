@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Bike::Application.load_tasks
+Tandem::Application.load_tasks
