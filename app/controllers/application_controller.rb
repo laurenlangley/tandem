@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    Rails.logger.debug session[:previous_url]
     if session[:previous_url].include?("iphone")
       iphone_path
     else
