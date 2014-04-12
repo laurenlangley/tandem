@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 
 
   def self.find_for_facebook_oauth(auth)
-    Rails.logger.debug auth
     u = User.where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider   = auth.provider
       user.uid        = auth.uid
@@ -23,7 +22,8 @@ class User < ActiveRecord::Base
     json[:age]      = ( (Date.today - Date.parse( auth.extra.raw_info.birthday )).to_i / 365 )
     u.json          = json.to_json
     u.save
+    
     u
-
+    
   end
 end
