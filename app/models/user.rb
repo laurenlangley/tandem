@@ -5,9 +5,17 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook]
 
 
+  def data
+    JSON.parse(json)
+  end
 
-  def self.find_for_facebook_oauth(auth)
-    u = User.where(auth.slice(:provider, :uid)).first_or_create do |user|
+  def image_large
+    image + "?type=large"
+  end
+
+  def self.find_for_facebook_oauth(auth)\
+
+    u = User.where( auth.slice(:provider, :uid) ).first_or_create do |user|
       user.provider   = auth.provider
       user.uid        = auth.uid
     end

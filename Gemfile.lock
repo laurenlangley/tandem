@@ -121,6 +121,9 @@ GEM
     hashie (2.1.1)
     highline (1.6.21)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -303,6 +306,7 @@ DEPENDENCIES
   factory_girl
   factory_girl_rails
   figaro
+  httparty
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails

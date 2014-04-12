@@ -13,6 +13,8 @@ gem 'angular-ui-bootstrap-rails'
 gem 'compass-rails'
 gem 'susy'
 
+gem 'httparty'
+
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem "devise"
