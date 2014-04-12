@@ -14,6 +14,7 @@ gem 'compass-rails'
 gem 'susy'
 
 gem 'httparty'
+gem 'faker'
 
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
