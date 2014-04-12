@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.0.2'
-gem 'sqlite3'
+
+gem 'sqlite3', :group => [:development, :test]
+gem 'pg', :group => :production
+gem 'rails_12factor', :group => :production
 
 gem 'jquery-ui-rails'
 gem 'angularjs-rails'
@@ -10,8 +13,6 @@ gem 'angular-ui-bootstrap-rails'
 gem 'compass-rails'
 gem 'susy'
 
-
-gem 'rails_12factor'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem "devise"

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Bike::Application.config.secret_key_base = 'a2333428eec23dff4a612ddee3d896ef223bdc476c7113403074d00ea5a59495225d1f9a40137765691dd9982c409e37a748d1bfcb6848d8f4475d3547a6ea37'
+Tandem::Application.config.secret_key_base = 'a2333428eec23dff4a612ddee3d896ef223bdc476c7113403074d00ea5a59495225d1f9a40137765691dd9982c409e37a748d1bfcb6848d8f4475d3547a6ea37'
