@@ -18,8 +18,15 @@ class User < ActiveRecord::Base
 
     u.json          = "{}" if u.json.nil?
     json = JSON.parse( u.json )
-    json[:gender]   = auth.extra.raw_info.gender
-    json[:age]      = ( (Date.today - Date.parse( auth.extra.raw_info.birthday )).to_i / 365 )
+    json[:gender]   = auth.extra.raw_info.gender if auth.extra.raw_info.gender.present?
+
+    begin
+      d = Date.parse( auth.extra.raw_info.birthday )
+      json[:age]      = ( (Date.today - d).to_i / 365 )
+    rescue
+      nil
+    end
+
     u.json          = json.to_json
     u.save
     
