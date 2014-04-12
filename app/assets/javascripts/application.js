@@ -12,5 +12,42 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//
+//  BEGIN NIGHTSPROUT STACK:
+//
+//= ANGULAR: Core Angular Files
+//= require angular
+//= require angular-route
+//= require angular-animate
+//= require angular-sanitize
+//
+//  ANGULAR: Gem Plugins
+//= require jquery.ui.all
+//= require angular-ui-bootstrap
+//= require angular-ui-bootstrap-tpls
+//
+//  ANGULAR: Core AngularCatalog App
+//= require tandem_app/tandem_app
+//= require tandem_app/routes
+//
+//  ANGULAR: Core AngularCatalog App Controllers
+//= require tandem_app/controllers/settingsController
+//
+//  ANGULAR: Core AngularCatalog App Services
+//= require tandem_app/services/httpService
+//
+//= require_tree ./components
+
+
+
+
+
+
+
+
+
+
+
+
+
+
