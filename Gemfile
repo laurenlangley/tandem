@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 gem 'sqlite3'
 
+gem 'pg', :group => :production
+gem 'rails_12factor', :group => :production
+
 gem 'jquery-ui-rails'
 gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
