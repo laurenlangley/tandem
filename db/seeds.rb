@@ -10,14 +10,14 @@ User.delete_all
 
 valid_availabilities = ["", "12am-4am", "4am-8am", "8am-12pm", "12pm-4pm", "4pm-8pm", "8pm-12am"]
 
-15.times do |i|
+25.times do |i|
   User.create({
-    :email  => "mitchell+#{i}@nightsprout.com",
+    :email  => Faker::Internet.safe_email,
     :name   => Faker::Name.name,
     :image  => Faker::Avatar.image,
     :json   => {
-      :age    => ( rand(30) + 18 ),
-      :gender => ( rand(2) ? "male" : "female" ),
+      :age    => ( rand(25) + 18 ),
+      :gender => ( rand(2) == 0 ? "male" : "female" ),
       :location => {
         :road_warrior     => rand(2) == 0,
         :trails_only      => rand(2) == 0,
