@@ -43,7 +43,19 @@
 
 
 
-
+$(document).ready(function() {
+  $("#tm-top-bar").click(function() {
+    console.log("test");
+    $("body").toggleClass("tm-nav-expanded");
+  });
+  $("nav > ul > li > a").click(function() {
+    $("body").removeClass("tm-nav-expanded");
+  });
+});
+ 
+$(window).resize(function() {
+  $("body").removeClass("tm-nav-expanded");
+});
 
 
 

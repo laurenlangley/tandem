@@ -1,0 +1,441 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/css3/transform-legacy";
+@import "compass/utilities/general/clearfix";
+@import "compass/utilities/general/hacks";
+@import "susy";
+
+
+
+/****************************************************************************************************
+
+  Table of Contents
+
+*****************************************************************************************************
+
+  0.  SCSS Variables
+      - Color Theme
+      - Media Size Breakpoints
+      - Susy Grid Settings
+      - Layout Sizing
+      - Font Stacks
+
+  1.  Universal Cascade
+      - Body
+
+  2.  Tag-Specific Styles
+      - Forms
+      - Tables
+
+  3.  Utility Classes
+      - Paragraph Variations
+      - Buttons
+
+  4.  Template Sections
+
+  5.  Content Elements
+
+  6.  Pages
+
+  7.  JS Widgets
+
+****************************************************************************************************/
+
+
+
+/****************************************************************************************************
+  0.  SCSS Variables
+****************************************************************************************************/
+
+
+/* Color Theme */
+/************************************************/
+
+$font-header-color: #404040;
+$font-body-color: #404040;
+
+$blue: #54a4a3;
+$red: #ee3a2e;
+$beige: #dfdcca;
+$charcoal: #333835;
+$white: #ffffff;
+$line-color: #333835;
+
+
+/* Media Size Breakpoints */
+/************************************************/
+
+$cinema-breakpoint: 1900px;
+$monitor-breakpoint: 1200px;
+$laptop-breakpoint: 980px;
+$tablet-breakpoint: 768px;
+$phone-breakpoint: 480px;
+
+@mixin screen-format($media-type) {
+  @if $media-type == cinema {
+    @media (min-width: $cinema-breakpoint) { @content; }
+  }
+  @if $media-type == monitor {
+    @media (min-width: $monitor-breakpoint) and (max-width: $cinema-breakpoint - 1) { @content; }
+  }
+  @else if $media-type == laptop {
+    @media (min-width: $laptop-breakpoint) and (max-width: $monitor-breakpoint - 1) { @content; }
+  }
+  @else if $media-type == tablet {
+    @media (min-width: $tablet-breakpoint) and (max-width: $laptop-breakpoint - 1) { @content; }
+  }
+  @else if $media-type == phone {
+    @media (min-width: $phone-breakpoint) and (max-width: $tablet-breakpoint - 1) { @content; }
+  }
+  @else if $media-type == nano {
+    @media (max-width: $phone-breakpoint - 1) { @content; }
+  }
+}
+
+
+/* Susy Grid Settings */
+/************************************************/
+
+$total-columns:   4;
+$column-width:    114px;
+$gutter-width:    40px;
+$grid-padding:    0;
+
+
+/* Font Stacks */
+/************************************************/
+
+$header-font: 'Montserrat', 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$body-font: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+$symbolset-standard: "SSStandard";
+$symbolset-symbolicons: "SSSymbolicons";
+$symbolset-social: "SSSocial";
+
+
+/****************************************************************************************************
+  1.  Universal Cascade
+****************************************************************************************************/
+
+
+/* HTML */
+/************************************************/
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+
+/* Body */
+/************************************************/
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: $body-font;
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 400;
+  color: $font-body-color;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {}
+
+h1 {
+  @include screen-format(laptop) {}
+  @include screen-format(tablet) {}
+  @include screen-format(phone) {}
+  @include screen-format(nano) {}
+}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+h6 {}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin: 15px 0 24px 0;
+  padding: 0;
+  border: none;
+  color: $line-color;
+  background: $line-color;
+}
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+p {}
+p.tm-paragraph-short {}
+
+ul.tm-unlinked-list {
+  width: 100%;
+  margin: 0 0 20px 0;
+  padding: 0 0 0 30px;
+  list-style-type: disc;
+  @include box-sizing(border-box);
+  li {
+    width: 100%;
+    
+    @include box-sizing(border-box);
+  }
+}
+
+label,
+span.tm-form-label-basic {
+  display: inline-block;
+}
+label:hover {
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  display: inline-block;
+  margin: 0;
+  font-family: $body-font;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  @include opacity(0.33);
+}
+
+ .tm-input-disabled {
+  > *  {
+    @include opacity(0.33);
+  }
+ }
+
+select {
+  height: 40px;
+  border: 1px solid $line-color;
+}
+
+textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea {
+  padding: 5px 9px 8px 9px;
+  border: 1px solid $line-color;
+  color: $font-body-color;
+  -webkit-font-smoothing: antialiased;
+  @include box-sizing(border-box);
+  @include border-radius(2px);
+}
+
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 1px solid $blue;
+}
+
+a {
+  color: $blue;
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* Buttons */
+/************************************************/
+
+.tm-submit {
+  display: inline-block;
+  float: right;
+  width: 100%;
+}
+
+.tm-button,
+input[type="submit"],
+button {
+  display: inline-block;
+  padding: 4px 20px 6px 20px;
+  margin: 0;
+  border: none;
+  color: $white;
+  background: $font-header-color;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: $body-font;
+  line-height: 30px;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -webkit-appearance: none;
+  @include box-sizing(border-box);
+  @include border-radius(2px);
+  @include transition(opacity 0.1s linear);
+}
+
+.tm-button:active,
+input[type="submit"]:active,
+button:active {
+  position: relative;
+  top: 2px;
+}
+
+.tm-button:hover,
+input[type="submit"]:hover,
+button:hover {
+  text-decoration: none;
+  @include opacity(.66);
+}
+
+.tm-button:focus,
+input[type="submit"]:focus,
+button:focus {
+  outline: none;
+}
+
+.tm-button:before,
+input[type="submit"]:before,
+button:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+}
+
+input[type="submit"].tm-button-minor,
+button.tm-button-minor,
+.tm-button-minor {
+  padding: 2px 15px 2px 15px;
+  font-family: $header-font;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: uppercase;
+  i.ss-icon {
+    position: relative;
+    top: 2px;
+  }
+}
+
+input[type="submit"].tm-button-major,
+button.tm-button-major,
+.tm-button-major {
+  padding: 3px 20px 7px 20px;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+
+
+
+#tm-demo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  #tm-demo-iphone {
+    width: 754px;
+    height: 1561px;
+    background: transparent image-url("iphone.png") no-repeat top center;
+    #tm-demo-iphone-container {
+      width: 640px;
+      height: 1136px;
+      position: relative;
+      top: 223px;
+      left: 56px;
+      #tm-demo-viewport {
+        width: 640px;
+        height: 1136px;
+        position: relative;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+body.tm-nav-expanded #tandem {
+  left: 500px;
+}
+body.tm-nav-expanded #tm-top-bar {
+  left: 500px;
+}
+
+#tandem {
+  display: block;
+  width: 640px;
+  height: 1136px;  
+  background: $white;
+  position: absolute;
+  @include transition-property(left);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in); 
+  @include transition-delay(0);
+}
+
+#tm-top-bar {
+  display: block;
+  width: 640px;
+  height: 80px;
+  background: $charcoal;
+  position: absolute;
+}
+
+nav {
+  display: block;
+  width: 640px;
+  height: 1136px;  
+  background: $beige;
+  position: absolute;
+  > ul {
+    > li {
+      > a {
+        font-family: $header-font;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: $charcoal;
+        font-size: 18px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+
+nav                               { z-index: 100; }
+#tandem                           { z-index: 200; }
+#tm-top-bar                       { z-index: 250; }
+
+
+
