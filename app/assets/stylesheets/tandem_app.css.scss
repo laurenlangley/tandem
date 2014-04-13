@@ -54,6 +54,7 @@ $font-header-color: #333835;
 $font-body-color: #333835;
 
 $red: #ee3a2e;
+$dark-red: #de0d08;
 $blue: #54a4a3;
 $beige: #dfdcca;
 $charcoal: #333835;
@@ -283,7 +284,7 @@ button {
   margin: 0;
   border-top: none;
   border-right: none;
-  border-bottom: 2px solid $charcoal;
+  border-bottom: 3px solid $dark-red;
   border-left: none;
   color: $white;
   background: $red;
@@ -384,6 +385,18 @@ button:before {
       @include legacy-pie-clearfix;
       @include screen-format(monitor) {
         width: $monitor-breakpoint - 40px; // The subtraction of 40px accounts for the container padding.
+      }
+      > .tm-button,
+      > input[type="submit"],
+      > button {
+        @include screen-format(phone) {
+          width: 100%;
+          text-align: center;
+        }
+        @include screen-format(nano) {
+          width: 100%;
+          text-align: center;
+        }
       }
     }
   }
@@ -684,7 +697,7 @@ span.tm-filter-scene-weekendwarrior { background: transparent url("icon_weekendw
 
 span.tm-logo {
   display: block;
-  margin: 260px auto 0 auto;
+  margin: 260px auto 80px auto;
   width: 164px;
   height: 123px;
   background: transparent url("home-logo.png") no-repeat 0 0;
