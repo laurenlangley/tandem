@@ -1,10 +1,10 @@
 <h1>Matches</h1>
 
 <ol id="tm-matches">
-  <li class="tm-match" ng-repeat="match in matches">
+  <li class="tm-match" ng-repeat="match in filteredMatches = ( matches | filter:ageFilterMin | filter:ageFilterMax | filter:locationFilter | filter:sceneFilter | filter:skillFilter | filter:lookingForFilter | filter:availabilityFilter )">
     <header>
       <div class="tm-match-image">
-        <img ng-src="{{match.data['image_large']}}" />
+        <img ng-src="{{match.image_large}}" />
       </div>
       <!-- .tm-match-image -->
       <div class="tm-match-data">
