@@ -19,16 +19,16 @@ class User < ActiveRecord::Base
     
     total   = 0
     points  = 0
-    other_doc.slice(:location, :speed, :skill, :scene, :availability, :looking_for).each do |thing_key, thing|
+    other_doc.slice(:location, :skill, :scene, :availability, :looking_for).each do |thing_key, thing|
       thing.each do |k, v|
-        next unless doc[thing_key].present? && doc[thing_key][k].present?
+        next unless doc[thing_key].present? && !doc[thing_key][k].nil?
         total += 1
         points += 1 if doc[thing_key][k] == v
       end
     end
 
     return 0 if total == 0
-    ( 100 * (points / total.to_f) ).round
+    ( (50 * (points / total.to_f)) + 50 ).round
   end
 
   def self.find_for_facebook_oauth(auth)
