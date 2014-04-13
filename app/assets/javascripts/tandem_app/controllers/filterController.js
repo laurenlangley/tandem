@@ -9,6 +9,7 @@ TandemApp.controller("filterController", ["$scope", "httpService", "$rootScope",
 
   // Initiate the HTTP request.
   httpService.getApiEndpoint(apiEndpoint).success(getCatalogSuccess);
+  localStorage["filters"] = JSON.stringify( $rootScope.filters );
 
 }]);
 

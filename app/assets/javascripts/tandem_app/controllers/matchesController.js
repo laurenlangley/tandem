@@ -35,6 +35,8 @@ TandemApp.controller("matchesController", ["$scope", "httpService", "$rootScope"
   // Initiate the HTTP request.
   httpService.getApiEndpoint(apiEndpoint).success(getMatchesSuccess);
 
+  localStorage["filters"] = JSON.stringify( $rootScope.filters );
+
 }]);
 
 
