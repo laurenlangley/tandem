@@ -46,6 +46,27 @@
   </ul>
   <!-- .tm-filter-scene -->
 
+  <h5>Filter Goals(s):</h5>
+  <ul class="tm-filter-goals">
+    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['training'] == true }" ng-click="filters['looking_for']['training'] = !filters['looking_for']['training']">
+      <span class="tm-filter-goals-training">&nbsp;</span>
+      Training
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['leisure'] == true }" ng-click="filters['looking_for']['leisure'] = !filters['looking_for']['leisure']">
+      <span class="tm-filter-goals-leisure">&nbsp;</span>
+      Leisure
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['commuting'] == true }" ng-click="filters['looking_for']['commuting'] = !filters['looking_for']['commuting']">
+      <span class="tm-filter-goals-commuting">&nbsp;</span>
+      Commuting
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['exercise'] == true }" ng-click="filters['looking_for']['exercise'] = !filters['looking_for']['exercise']">
+      <span class="tm-filter-goals-exercise">&nbsp;</span>
+      Exercise
+    </li>
+  </ul>
+  <!-- .tm-filter-location -->
+
   <h5>Filter Skill Level:</h5>
   <ul class="tm-filter-skill">
     <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'beginner' }" ng-click="filters['skill'] = 'beginner'">
@@ -123,27 +144,6 @@
     </li>
   </ul>
   <!-- .tm-filter-speed -->
-
-  <h5>Filter Goals(s):</h5>
-  <ul class="tm-filter-goals">
-    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['training'] == true }" ng-click="filters['looking_for']['training'] = !filters['looking_for']['training']">
-      <span class="tm-filter-goals-training">&nbsp;</span>
-      Training
-    </li>
-    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['leisure'] == true }" ng-click="filters['looking_for']['leisure'] = !filters['looking_for']['leisure']">
-      <span class="tm-filter-goals-leisure">&nbsp;</span>
-      Leisure
-    </li>
-    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['commuting'] == true }" ng-click="filters['looking_for']['commuting'] = !filters['looking_for']['commuting']">
-      <span class="tm-filter-goals-commuting">&nbsp;</span>
-      Commuting
-    </li>
-    <li ng-class="{ 'tm-filter-true' : filters['looking_for']['exercise'] == true }" ng-click="filters['looking_for']['exercise'] = !filters['looking_for']['exercise']">
-      <span class="tm-filter-goals-exercise">&nbsp;</span>
-      Exercise
-    </li>
-  </ul>
-  <!-- .tm-filter-location -->
 
 </div>
 <!-- #tm-filters -->
