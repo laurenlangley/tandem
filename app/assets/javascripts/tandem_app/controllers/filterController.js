@@ -3,6 +3,8 @@ TandemApp.controller("filterController", ["$scope", "httpService", "$rootScope",
   // This is the main data model.
   $scope.dataModel = {};
 
+
+
   // This is the string that defines where the JSON endpoint resides.
   var apiEndpoint = '/users/current.json';
 
