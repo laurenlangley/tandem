@@ -350,7 +350,7 @@ button:before {
       height: 65px;
       z-index: 600;
       left: 0;
-      background: #ffffff image-url("nav-expander.png") no-repeat 30px 20px;
+      background: #ffffff url("nav-expander.png") no-repeat 30px 20px;
       @include box-shadow(0 3px 3px -3px $charcoal);
     }
     @include screen-format(nano) {
@@ -360,7 +360,7 @@ button:before {
       height: 65px;
       z-index: 600;
       left: 0;
-      background: #ffffff image-url("nav-expander.png") no-repeat 30px 20px;
+      background: #ffffff url("nav-expander.png") no-repeat 30px 20px;
       @include box-shadow(0 3px 3px -3px $charcoal);
     }
   }
@@ -376,6 +376,7 @@ button:before {
     width: 100%;
     .tm-container {
       display: block;
+      height: 100%;
       padding: 0 20px;
       margin: 0 auto;
       @include legacy-pie-clearfix;
@@ -504,7 +505,10 @@ button:before {
             color: $white;
             @include box-sizing(border-box);
             i.ss-icon {
-              display: inline;
+              display: inline-block;
+              margin: 0 10px 0 0;
+              position: relative;
+              top: 2px;
             }
           }
           @include screen-format(nano) {
@@ -513,7 +517,10 @@ button:before {
             color: $white;
             @include box-sizing(border-box);
             i.ss-icon {
-              display: inline;
+              display: inline-block;
+              margin: 0 10px 0 0;
+              position: relative;
+              top: 2px;
             }
           }
         }
@@ -555,16 +562,14 @@ button:before {
   }
 
   > section {
-    padding: 130px 0 0 0;
     height: 100%;
     position: relative;
     background: $white;
     overflow: scroll;
-    @include box-sizing(border-box);
-    @include transition-property(box-shadow, opacity);
-    @include transition-duration(0.25s, 0);
-    @include transition-delay(0.25s, 0);
-    @include transition-timing-function(ease-in, ease-in);
+    @include transition-property(left);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in); 
+    @include transition-delay(0);
   }
 
 }
