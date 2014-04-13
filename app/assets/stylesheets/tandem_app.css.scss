@@ -618,6 +618,7 @@ button:before {
 
 
 #tm-filters {
+  margin: 90px 0 0 0;
   > h5 {
     margin: 0 0 10px 0;
     font-size: 24px;
@@ -681,12 +682,21 @@ span.tm-filter-scene-socialrider { background: transparent url("icon_socialrider
 span.tm-filter-scene-commuter { background: transparent url("icon_weekdaycommuter.png") no-repeat 0 0; }
 span.tm-filter-scene-weekendwarrior { background: transparent url("icon_weekendwarrior.png") no-repeat 0 0; }
 
+span.tm-logo {
+  display: block;
+  margin: 260px auto 0 auto;
+  width: 164px;
+  height: 123px;
+  background: transparent url("home-logo.png") no-repeat 0 0;
+  @include background-size(cover !important);
+}
+
 
 ol#tm-matches > li.tm-match,
 #tm-profile {
   display: inline-block;
   padding: 10px;
-  margin: 0 0 10px 0;
+  margin: 90px 0 10px 0;
   background: $white;
   font-size: 14px;
   line-height: 25px;
