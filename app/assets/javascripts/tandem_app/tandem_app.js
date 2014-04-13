@@ -28,6 +28,7 @@ TandemApp.run(["$rootScope", "$route", function($rootScope, $route) {
          "roadie":          true
       },
       "skill":              "beginner",
+      "speed":              "casual",
       "looking_for": {
          "training":        true,
          "fun":             true,

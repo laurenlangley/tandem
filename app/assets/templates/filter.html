@@ -103,6 +103,27 @@
   </ul>
   <!-- .tm-filter-availability -->
 
+  <h5>Filter Speed(s):</h5>
+  <ul class="tm-filter-speed">
+    <li ng-class="{ 'tm-filter-true' : filters['speed'] == 'casual' }" ng-click="filters['speed'] = 'casual'">
+      <span class="tm-filter-speed-casual">&nbsp;</span>
+      Casual
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['speed'] == 'confident' }" ng-click="filters['speed'] = 'confident'">
+      <span class="tm-filter-speed-confident">&nbsp;</span>
+      Confident
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['speed'] == 'fast' }" ng-click="filters['speed'] = 'fast'">
+      <span class="tm-filter-speed-fast">&nbsp;</span>
+      Fast
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['speed'] == 'crazyfast' }" ng-click="filters['speed'] = 'crazyfast'">
+      <span class="tm-filter-speed-crazyfast">&nbsp;</span>
+      Crazy Fast
+    </li>
+  </ul>
+  <!-- .tm-filter-speed -->
+
 </div>
 <!-- #tm-filters -->
 

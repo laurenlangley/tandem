@@ -192,7 +192,7 @@ textarea,
 select {
   display: inline-block;
   font-family: $body-font;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 30px;
 }
 
@@ -234,7 +234,6 @@ ol.tm-list-small {
   @include prefix(2);
   @include suffix(2);
   margin: 0 auto 20px auto;
-  overflow: hidden;
   @include screen-format(phone) {
     @include span-columns(12 omega, 12);
     @include prefix(0);
@@ -249,8 +248,11 @@ ol.tm-list-small {
     padding: 0 40px 0 0;
     position: relative;
     left: 40px;
+    @include legacy-pie-clearfix;
     > select {
-      margin: 0 0 20px 0;
+      float: right;
+      width: 120px;
+      margin: 0 0 10px 0;
     }
   }
   > input[type="text"],
@@ -669,6 +671,7 @@ button:before {
 
 
 ul.tm-filter-scene,
+ul.tm-filter-speed,
 ul.tm-filter-availability,
 ul.tm-filter-location,
 ul.tm-filter-skill {
@@ -706,6 +709,11 @@ span.tm-filter-skill-beginner { background: transparent url("icon_beginner.png")
 span.tm-filter-skill-intermediate { background: transparent url("icon_intermediate.png") no-repeat 0 0; }
 span.tm-filter-skill-advanced { background: transparent url("icon_advanced.png") no-repeat 0 0; }
 
+span.tm-filter-speed-casual { background: transparent url("icon_casual.png") no-repeat 0 0; }
+span.tm-filter-speed-confident { background: transparent url("icon_confident.png") no-repeat 0 0; }
+span.tm-filter-speed-fast { background: transparent url("icon_fast.png") no-repeat 0 0; }
+span.tm-filter-speed-crazyfast { background: transparent url("icon_crazyfast.png") no-repeat 0 0; }
+
 span.tm-match-day-morning { background: transparent url("icon_morning.png") no-repeat 0 0; }
 span.tm-match-day-afternoon { background: transparent url("icon_afternoon.png") no-repeat 0 0; }
 span.tm-match-day-evening { background: transparent url("icon_evening.png") no-repeat 0 0; }
@@ -738,6 +746,7 @@ ol#tm-matches > li.tm-match,
   background: $white;
   font-size: 14px;
   line-height: 25px;
+  overflow-x: hidden;
   @include border-radius(6px);
   @include box-shadow(0 1px 3px rgba(0, 0, 0, .15));
   > p {
