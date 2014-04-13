@@ -1,13 +1,60 @@
 <h1>Filters</h1>
 
-<ul class="tm-toggle-buttons">
-  <li>Off Road</li>
-  <li>wwww</li>
-  <li>wwww</li>
-  <li>wwww</li>
-  <li>Off</li>
-  <li>wwww</li>
-  <li>wwww</li>
-  <li>wwww</li>
+<ul class="tm-filter-location">
+  <li ng-class="{ 'tm-filter-true' : filters['location']['offroad'] == true }" ng-click="filters['location']['offroad'] = !filters['location']['offroad']">Off Road</li>
+  <li ng-class="{ 'tm-filter-true' : filters['location']['paved_trail'] == true }" ng-click="filters['location']['paved_trail'] = !filters['location']['paved_trail']">Paved Trail</li>
+  <li ng-class="{ 'tm-filter-true' : filters['location']['road'] == true }" ng-click="filters['location']['road'] = !filters['location']['road']">Road</li>
 </ul>
-<!-- .tm-toggle-buttons -->
+<!-- .tm-filter-location -->
+
+<ul class="tm-filter-scene">
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['weekend_warrior'] == true }" ng-click="filters['scene']['weekend_warrior'] = !filters['scene']['weekend_warrior']">Weekend Warrior</li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['commuter'] == true }" ng-click="filters['scene']['commuter'] = !filters['scene']['commuter']">Commuter</li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['mountain'] == true }" ng-click="filters['scene']['mountain'] = !filters['scene']['mountain']">Mountain Bikes</li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['fixies'] == true }" ng-click="filters['scene']['fixies'] = !filters['scene']['fixies']">Fixed Gear</li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['social'] == true }" ng-click="filters['scene']['social'] = !filters['scene']['social']">Social</li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['roadie'] == true }" ng-click="filters['scene']['roadie'] = !filters['scene']['roadie']">Roadie</li>
+</ul>
+<!-- .tm-filter-scene -->
+
+<ul class="tm-filter-skill">
+  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'beginner' }" ng-click="filters['skill'] = 'beginner'">Beginner</li>
+  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'intermediate' }" ng-click="filters['skill'] = 'intermediate'">Intermediate</li>
+  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'advanced' }" ng-click="filters['skill'] = 'advanced'">Advanced</li>
+</ul>
+<!-- .tm-filter-skill -->
+
+<ul class="tm-filter-availability">
+  <li ng-click="cycleAvailability('sunday', filters['availability']['sunday']);">
+    Sunday: {{filters['availability']['sunday']}}
+  </li>
+  <li ng-click="cycleAvailability('monday', filters['availability']['monday']);">
+    Monday: {{filters['availability']['monday']}}
+  </li>
+  <li ng-click="cycleAvailability('tuesday', filters['availability']['tuesday']);">
+    Tuesday: {{filters['availability']['tuesday']}}
+  </li>
+  <li ng-click="cycleAvailability('wednesday', filters['availability']['wednesday']);">
+    Wednesday: {{filters['availability']['wednesday']}}
+  </li>
+  <li ng-click="cycleAvailability('thursday', filters['availability']['thursday']);">
+    Thursday: {{filters['availability']['thursday']}}
+  </li>
+  <li ng-click="cycleAvailability('friday', filters['availability']['friday']);">
+    Friday: {{filters['availability']['friday']}}
+  </li>
+  <li ng-click="cycleAvailability('saturday', filters['availability']['saturday']);">
+    Saturday: {{filters['availability']['saturday']}}
+  </li>
+</ul>
+<!-- .tm-filter-availability -->
+
+
+
+
+
+
+
+
+
+
