@@ -12,7 +12,7 @@
       <!-- .tm-match-image -->
       <div class="tm-match-data">
         <h3>{{match.data["first_name"]}}</h3>
-        <h4><span>{{match.score}}%</span> | {{match.data["gender"]}}, {{match.data["age"]}}, {{match.data["city"]}}</h4>
+        <h4><span>{{match.score}}% Match</span> | {{match.data["gender"]}}, {{match.data["age"]}}</h4>
         <span class="tm-tag" ng-if="match.data['skill']['beginner'] == true">Beginner</span>
         <span class="tm-tag" ng-if="match.data['skill']['intermediate'] == true">Intermediate</span>
         <span class="tm-tag" ng-if="match.data['skill']['advanced'] == true">Advanced</span>
@@ -21,37 +21,7 @@
     </header>
     <p>{{match.data["summary"]}}</p>
 
-    <ol class="tm-match-days">
-      <li>Su
-        <span ng-if="match.data['availability']['sunday']">{{match.data['availability']['sunday']}}</span>
-        <span ng-if="!match.data['availability']['sunday']">Not Available.</span>
-      </li>
-      <li>Mo
-        <span ng-if="match.data['availability']['monday']">{{match.data['availability']['monday']}}</span>
-        <span ng-if="!match.data['availability']['monday']">Not Available.</span>
-      </li>
-      <li>Tu
-        <span ng-if="match.data['availability']['tuesday']">{{match.data['availability']['tuesday']}}</span>
-        <span ng-if="!match.data['availability']['tuesday']">Not Available.</span>
-      </li>
-      <li>We
-        <span ng-if="match.data['availability']['wednesday']">{{match.data['availability']['wednesday']}}</span>
-        <span ng-if="!match.data['availability']['wednesday']">Not Available.</span>
-      </li>
-      <li>Tr
-        <span ng-if="match.data['availability']['thursday']">{{match.data['availability']['thursday']}}</span>
-        <span ng-if="!match.data['availability']['thursday']">Not Available.</span>
-      </li>
-      <li>Fr
-        <span ng-if="match.data['availability']['friday']">{{match.data['availability']['friday']}}</span>
-        <span ng-if="!match.data['availability']['friday']">Not Available.</span>
-      </li>
-      <li>Sa
-        <span ng-if="match.data['availability']['saturday']">{{match.data['availability']['saturday']}}</span>
-        <span ng-if="!match.data['availability']['saturday']">Not Available.</span>
-      </li>
-    </ol>
-    <!-- .tm-match-days -->
+
 
     <span class="tm-tag" ng-if="match.data['location']['offroad'] == true">Off Road</span>
     <span class="tm-tag" ng-if="match.data['location']['paved_trail'] == true">Paved Trail</span>
@@ -65,35 +35,28 @@
     <span class="tm-tag" ng-if="match.data['looking_for']['fun'] == true">Paved Trail</span>
     <span class="tm-tag" ng-if="match.data['looking_for']['commuting'] == true">Road</span>
     <span class="tm-tag" ng-if="match.data['looking_for']['destination'] == true">Road</span>
-    <span class="tm-tag" ng-if="
-      match.data['looking_for']['training'] == false &&
-      match.data['looking_for']['fun'] == false &&
-      match.data['looking_for']['commuting'] == false &&
-      match.data['looking_for']['destination'] == false">No preferred purpose.</span>
 
-    <span ng-if="match.data['scene']['weekend_warrior'] == true">Weekend Warrior</span>
-    <span ng-if="match.data['scene']['commuter'] == true">Commuter</span>
-    <span ng-if="match.data['scene']['mountain'] == true">Mountain Biking</span>
-    <span ng-if="match.data['scene']['fixies'] == true">Fixed Gear</span>
-    <span ng-if="match.data['scene']['social'] == true">Social</span>
-    <span ng-if="match.data['scene']['roadie'] == true">Roadie</span>
-    <span ng-if="
-      match.data['scene']['weekend_warrior'] == false &&
-      match.data['scene']['commuter'] == false &&
-      match.data['scene']['mountain'] == false &&
-      match.data['scene']['fixies'] == false &&
-      match.data['scene']['social'] == false &&
-      match.data['scene']['roadie'] == false">No preferred scene.</span>
+    <span class="tm-tag" ng-if="match.data['scene']['weekend_warrior'] == true">Weekend Warrior</span>
+    <span class="tm-tag" ng-if="match.data['scene']['commuter'] == true">Commuter</span>
+    <span class="tm-tag" ng-if="match.data['scene']['mountain'] == true">Mountain Biking</span>
+    <span class="tm-tag" ng-if="match.data['scene']['fixies'] == true">Fixed Gear</span>
+    <span class="tm-tag" ng-if="match.data['scene']['social'] == true">Social</span>
+    <span class="tm-tag" ng-if="match.data['scene']['roadie'] == true">Roadie</span>
+    <span class="tm-tag tm-tag-grey">See More ...</span>
 
-
-
+    <ol class="tm-match-days">
+      <li ng-class="evaluateDay(match.data['availability']['sunday']);">Su</li>
+      <li ng-class="evaluateDay(match.data['availability']['monday']);">Mo</li>
+      <li ng-class="evaluateDay(match.data['availability']['tuesday']);">Tu</li>
+      <li ng-class="evaluateDay(match.data['availability']['wednesday']);">We</li>
+      <li ng-class="evaluateDay(match.data['availability']['thursday']);">Tr</li>
+      <li ng-class="evaluateDay(match.data['availability']['friday']);">Fr</li>
+      <li ng-class="evaluateDay(match.data['availability']['saturday']);">Sa</li>
+    </ol>
+    <!-- .tm-match-days -->
 
   </li>
   <!-- .tm-match -->
 </ol>
 <!-- #tm-matches -->
 
-
-<hr />
-
-{{matches}}

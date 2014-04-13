@@ -59,6 +59,7 @@ $beige: #dfdcca;
 $charcoal: #333835;
 
 $white: #ffffff;
+$grey: #c2c7c4;
 
 
 /* Media Size Breakpoints */
@@ -622,28 +623,38 @@ button:before {
 ol#tm-matches {
   li.tm-match {
     display: inline-block;
+    padding: 10px;
     margin: 0 0 10px 0;
     background: $white;
+    font-size: 14px;
+    line-height: 25px;
     @include border-radius(6px);
     @include box-shadow(0 1px 3px rgba(0, 0, 0, .15));
+    > p {
+      margin: 0 0 15px 0;
+    }
     > header {
+      margin: 0 0 15px 0;
       @include span-columns(12 omega, 12);
       .tm-match-image {
-        min-height: 79px;
+        min-height: 104px;
+        background: $grey;
+        @include border-radius(2px);
         @include screen-format(phone) {
-          @include span-columns(3, 12);
+          @include span-columns(4, 12);
         }
         @include screen-format(nano) {
-          @include span-columns(3, 12);
+          @include span-columns(4, 12);
         }
         img {}
       }
       .tm-match-data {
+        margin: 5px 0 0 0;
         @include screen-format(phone) {
-          @include span-columns(9 omega, 12);
+          @include span-columns(8 omega, 12);
         }
         @include screen-format(nano) {
-          @include span-columns(9 omega, 12);
+          @include span-columns(8 omega, 12);
         }
         h3 {
           width: 100%;
@@ -652,11 +663,16 @@ ol#tm-matches {
         }
         h4 {
           width: 100%;
+          margin: 0 0 5px 0;
           font-family: $accent-font;
           font-size: 10px;
           line-height: 20px;
           text-transform: uppercase;
           font-weight: 700;
+          @include opacity(.5);
+          > span {
+            color: $red;
+          }
         }
       }
     }
@@ -665,10 +681,39 @@ ol#tm-matches {
 
 
 
+ol.tm-match-days {
+  margin: 8px 0 0 0;
+  height: 30px;
+  background: $blue;
+  @include border-radius(2px);
+  @include span-columns(7 omega, 7);
+  > li {
+    display: inline-block;
+    float: left;
+    width: 14.28%;
+    height: 30px;
+    overflow: hidden;
+    color: $white;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    font-family: $accent-font;
+    text-transform: uppercase;
+    line-height: 30px;
+    text-align: center;
+  }
+  > li:nth-child(1) {
+    @include border-radius(2px 0 0 2px);
+  }
+  > li:nth-child(7) {
+    @include border-radius(0 2px 2px 0);
+  }
+}
 
 
-
-
+.tm-tag.tm-tag-grey {
+  background: $grey;
+}
 .tm-tag {
   display: inline-block;
   padding: 1px 10px 0 10px;
@@ -687,6 +732,13 @@ ol#tm-matches {
   @include box-sizing(border-box);
   @include border-radius(2px);
 }
+
+.tm-match-day-morning {   background: #469594; }
+.tm-match-day-afternoon { background: #388685; }
+.tm-match-day-evening {   background: #2a7877; }
+.tm-match-day-all {       background: #1c6968; }
+.tm-match-day-none {      background: #54a4a3; }
+
 
 
 
