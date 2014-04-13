@@ -255,6 +255,9 @@ ol.tm-list-small {
       margin: 0 0 10px 0;
     }
   }
+  > label {
+    width: 100%;
+  }
   > input[type="text"],
   > input[type="email"],
   > input[type="password"],
