@@ -2,8 +2,10 @@
 var TandemApp = angular.module("TandemApp", ["ngRoute", "ui.bootstrap", "ngSanitize"]);
 
 
+
+
 // Global Modal Open.
-TandemApp.run(["$rootScope", function($rootScope) {
+TandemApp.run(["$rootScope", "$route", function($rootScope, $route) {
 
   $rootScope.filters = {
     "minAge":             18,

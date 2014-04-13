@@ -1,28 +1,35 @@
 // Define some routes.
 TandemApp.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
   $routeProvider.when('/', {
-    templateUrl: '<%= asset_path("index.html") %>'
+    templateUrl: '<%= asset_path("index.html") %>',
+    activetab: 'home'
   }).
   when('/edit_profile', {
-    templateUrl: '<%= asset_path("edit_profile.html") %>'
+    templateUrl: '<%= asset_path("edit_profile.html") %>',
+    activetab: 'edit_profile'
   }).
   when('/filter', {
     templateUrl: '<%= asset_path("filter.html") %>',
-    controller: 'filterController'
+    controller: 'filterController',
+    activetab: 'filter'
   }).
   when('/matches', {
     templateUrl: '<%= asset_path("matches.html") %>',
-    controller: 'matchesController'
+    controller: 'matchesController',
+    activetab: 'matches'
   }).
   when('/profile', {
     templateUrl: '<%= asset_path("profile.html") %>',
-    controller: 'profileController'
+    controller: 'profileController',
+    activetab: 'profile'
   }).
   when('/messages', {
-    templateUrl: '<%= asset_path("messages.html") %>'
+    templateUrl: '<%= asset_path("messages.html") %>',
+    activetab: 'messages'
   }).
   otherwise({
-    templateUrl: '<%= asset_path("index.html") %>'
+    templateUrl: '<%= asset_path("index.html") %>',
+    activetab: 'home'
   });
 
   $locationProvider.html5Mode(true);

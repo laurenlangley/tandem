@@ -528,7 +528,7 @@ button:before {
         }
       }
       > li:hover,
-      > li#tm-menu-active-item {
+      > li.tm-nav-current {
         > a {
           border-bottom: 3px solid $red;
           text-decoration: none;
