@@ -785,7 +785,9 @@ ol#tm-matches > li.tm-match,
       text-align: center;
       overflow:hidden;
       img {
+        min-width: 100%;
         width: 100%;
+        min-height: 100%;
       }
     }
     .tm-match-data {
