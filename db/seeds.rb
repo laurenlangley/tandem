@@ -10,11 +10,20 @@ User.delete_all
 
 valid_availabilities = ["", "Morning", "Afternoon", "Evening"]
 
+
+
 25.times do |i|
+  ru = HTTParty.get("http://api.randomuser.me/?seed=#{rand(10000000)}")
+  begin
+    image = ru["results"][0]["user"]["picture"]
+  rescue
+    image = Faker::Avatar.image
+  end
+
   User.create({
     :email      => Faker::Internet.safe_email,
     :name       => Faker::Name.name,
-    :image      => Faker::Avatar.image,
+    :image      => image,
     :json       => {
       :age          => ( rand(25) + 18 ),
       :first_name   => Faker::Name.first_name,
