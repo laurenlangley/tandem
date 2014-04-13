@@ -52,6 +52,14 @@ $(document).ready(function() {
     $("#tandem").toggleClass("tm-nav-expanded-state");
   });
 
+  $( ".modal" ).dialog({ modal: true, autoOpen: false });
+  $(".modal-open").click(function(e){
+    var id = $(this).attr("href").replace("#", "")
+    $("#" + id).dialog("open");
+    e.preventDefault();
+    return false;
+  });
+
   $(window).scroll(function() {
 
     // Show or hide the top bar background.
