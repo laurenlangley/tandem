@@ -6,7 +6,7 @@ Tandem::Application.routes.draw do
   get "users/current", :to => "users#current"
   resources :users
 
-  # GET /users/current.json   => currently logged in controller
+  # GET /users/current.json   => currently logged in user
   # GET /users/:id.json       => get user information by id
   # GET /users.json           => get list of *all* users
   # PUT /users/:id.json       => update user
