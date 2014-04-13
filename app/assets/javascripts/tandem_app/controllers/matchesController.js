@@ -5,7 +5,7 @@ TandemApp.controller("matchesController", ["$scope", "httpService", "$rootScope"
 
   $scope.evaluateDay = function(time) {
     if ( time == "Morning" ) {
-      return "tm-match-day-morning";
+      return "tm-match-day-morning"
     }
     else if ( time == "Afternoon" ) {
       return "tm-match-day-afternoon";

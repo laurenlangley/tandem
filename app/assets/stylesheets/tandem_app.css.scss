@@ -351,7 +351,7 @@ button:before {
       height: 65px;
       z-index: 600;
       left: 0;
-      background: #ffffff url("nav-expander.png") no-repeat 30px 20px;
+      background: $white url("nav-expander.png") no-repeat 30px 20px;
       @include box-shadow(0 3px 3px -3px $charcoal);
     }
     @include screen-format(nano) {
@@ -361,7 +361,7 @@ button:before {
       height: 65px;
       z-index: 600;
       left: 0;
-      background: #ffffff url("nav-expander.png") no-repeat 30px 20px;
+      background: $white url("nav-expander.png") no-repeat 30px 20px;
       @include box-shadow(0 3px 3px -3px $charcoal);
     }
   }
@@ -620,63 +620,67 @@ button:before {
 }
 
 
-ol#tm-matches {
-  li.tm-match {
-    display: inline-block;
-    padding: 10px;
-    margin: 0 0 10px 0;
-    background: $white;
-    font-size: 14px;
-    line-height: 25px;
-    @include border-radius(6px);
-    @include box-shadow(0 1px 3px rgba(0, 0, 0, .15));
-    > p {
-      margin: 0 0 15px 0;
-    }
-    > header {
-      margin: 0 0 15px 0;
-      @include span-columns(12 omega, 12);
-      .tm-match-image {
-        min-height: 104px;
-        background: $grey;
-        @include border-radius(2px);
-        @include screen-format(phone) {
-          @include span-columns(4, 12);
-        }
-        @include screen-format(nano) {
-          @include span-columns(4, 12);
-        }
-        img {}
+ol#tm-matches > li.tm-match,
+#tm-profile {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  background: $white;
+  font-size: 14px;
+  line-height: 25px;
+  @include border-radius(6px);
+  @include box-shadow(0 1px 3px rgba(0, 0, 0, .15));
+  > p {
+    margin: 0 0 15px 0;
+  }
+  > header {
+    margin: 0 0 15px 0;
+    @include span-columns(12 omega, 12);
+    .tm-match-image {
+      min-height: 104px;
+      background: $grey;
+      @include border-radius(2px);
+      @include screen-format(phone) {
+        @include span-columns(4, 12);
       }
-      .tm-match-data {
-        margin: 5px 0 0 0;
-        @include screen-format(phone) {
-          @include span-columns(8 omega, 12);
-        }
-        @include screen-format(nano) {
-          @include span-columns(8 omega, 12);
-        }
-        h3 {
-          width: 100%;
-          font-size: 30px;
-          line-height: 40px;
-        }
-        h4 {
-          width: 100%;
-          margin: 0 0 5px 0;
-          font-family: $accent-font;
-          font-size: 10px;
-          line-height: 20px;
-          text-transform: uppercase;
-          font-weight: 700;
-          @include opacity(.5);
-          > span {
-            color: $red;
-          }
+      @include screen-format(nano) {
+        @include span-columns(4, 12);
+      }
+      img {}
+    }
+    .tm-match-data {
+      margin: 5px 0 0 0;
+      @include screen-format(phone) {
+        @include span-columns(8 omega, 12);
+      }
+      @include screen-format(nano) {
+        @include span-columns(8 omega, 12);
+      }
+      h3 {
+        width: 100%;
+        font-size: 30px;
+        line-height: 40px;
+      }
+      h4 {
+        width: 100%;
+        margin: 0 0 5px 0;
+        font-family: $accent-font;
+        font-size: 10px;
+        line-height: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        @include opacity(.5);
+        > span {
+          color: $red;
         }
       }
     }
   }
+}
+
+#tm-profile {
+  width: 100%;
+  @include box-sizing(border-box);
 }
 
 

@@ -1,1 +1,65 @@
 <h1>Profile</h1>
+
+
+
+
+<div id="tm-profile">
+
+  <header>
+    <div class="tm-match-image">
+      <img ng-src="{{user.data['image_large']}}" />
+    </div>
+    <!-- .tm-match-image -->
+    <div class="tm-match-data">
+      <h3>{{user.data["first_name"]}}</h3>
+      <h4><span>{{user.score}}% Match</span> | {{user.data["gender"]}}, {{user.data["age"]}}</h4>
+      <span class="tm-tag" ng-if="user.data['skill']['beginner'] == true">Beginner</span>
+      <span class="tm-tag" ng-if="user.data['skill']['intermediate'] == true">Intermediate</span>
+      <span class="tm-tag" ng-if="user.data['skill']['advanced'] == true">Advanced</span>
+      <span class="tm-tag" ng-if="
+      user.data['skill']['beginner'] == false && 
+      user.data['skill']['intermediate'] == false && 
+      user.data['skill']['advanced'] == false">Experience Unspecified</span>
+    </div>
+    <!-- .tm-match-data -->
+  </header>
+  <p>{{user.data["summary"]}}</p>
+
+
+  <h5>My Favorite Places to Ride:</h5>
+  <span class="tm-tag" ng-if="user.data['location']['offroad'] == true">Off Road</span>
+  <span class="tm-tag" ng-if="user.data['location']['paved_trail'] == true">Paved Trail</span>
+  <span class="tm-tag" ng-if="user.data['location']['road'] == true">Road</span>
+  <span class="tm-tag" ng-if="
+    user.data['location']['offroad'] == false &&
+    user.data['location']['paved_trail'] == false &&
+    user.data['location']['road'] == false">No preferred location.</span>
+
+  <h5>{{user.data["first_name"]}}'s Favorite Places to Ride:</h5>
+  <span class="tm-tag" ng-if="user.data['looking_for']['training'] == true">Off Road</span>
+  <span class="tm-tag" ng-if="user.data['looking_for']['fun'] == true">Paved Trail</span>
+  <span class="tm-tag" ng-if="user.data['looking_for']['commuting'] == true">Road</span>
+  <span class="tm-tag" ng-if="user.data['looking_for']['destination'] == true">Road</span>
+
+  <span class="tm-tag" ng-if="user.data['scene']['weekend_warrior'] == true">Weekend Warrior</span>
+  <span class="tm-tag" ng-if="user.data['scene']['commuter'] == true">Commuter</span>
+  <span class="tm-tag" ng-if="user.data['scene']['mountain'] == true">Mountain Biking</span>
+  <span class="tm-tag" ng-if="user.data['scene']['fixies'] == true">Fixed Gear</span>
+  <span class="tm-tag" ng-if="user.data['scene']['social'] == true">Social</span>
+  <span class="tm-tag" ng-if="user.data['scene']['roadie'] == true">Roadie</span>
+
+</div>
+<!-- #tm-profile -->
+
+{{user}}
+
+
+
+
+
+
+
+
+
+
+

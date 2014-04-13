@@ -15,7 +15,8 @@ TandemApp.config(["$routeProvider", "$locationProvider", function($routeProvider
     controller: 'matchesController'
   }).
   when('/profile', {
-    templateUrl: '<%= asset_path("profile.html") %>'
+    templateUrl: '<%= asset_path("profile.html") %>',
+    controller: 'profileController'
   }).
   when('/messages', {
     templateUrl: '<%= asset_path("messages.html") %>'

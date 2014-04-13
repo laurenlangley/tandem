@@ -1,8 +1,5 @@
 <h1>Matches</h1>
 
-
-
-
 <ol id="tm-matches">
   <li class="tm-match" ng-repeat="match in matches">
     <header>
@@ -31,10 +28,10 @@
       match.data['location']['paved_trail'] == false &&
       match.data['location']['road'] == false">No preferred location.</span>
 
-    <span class="tm-tag" ng-if="match.data['looking_for']['training'] == true">Off Road</span>
-    <span class="tm-tag" ng-if="match.data['looking_for']['fun'] == true">Paved Trail</span>
-    <span class="tm-tag" ng-if="match.data['looking_for']['commuting'] == true">Road</span>
-    <span class="tm-tag" ng-if="match.data['looking_for']['destination'] == true">Road</span>
+    <span class="tm-tag" ng-if="match.data['looking_for']['training'] == true">Training</span>
+    <span class="tm-tag" ng-if="match.data['looking_for']['fun'] == true">Fun</span>
+    <span class="tm-tag" ng-if="match.data['looking_for']['commuting'] == true">Commuting</span>
+    <span class="tm-tag" ng-if="match.data['looking_for']['destination'] == true">Destination</span>
 
     <span class="tm-tag" ng-if="match.data['scene']['weekend_warrior'] == true">Weekend Warrior</span>
     <span class="tm-tag" ng-if="match.data['scene']['commuter'] == true">Commuter</span>
