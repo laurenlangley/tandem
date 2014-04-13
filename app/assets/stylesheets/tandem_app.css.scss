@@ -617,8 +617,41 @@ button:before {
 
 
 .tm-filter-true {
-  background: $blue;
+  background-color: $blue;
 }
+
+
+ul.tm-filter-scene,
+ul.tm-filter-location,
+ul.tm-filter-skill {
+  @include span-columns(12 omega, 12);
+  li {
+    padding: 0 0 5px 0;
+    margin: 0 0 10px 0;
+    text-align: center;
+    @include span-columns(4, 12);
+    @include border-radius(3px);
+    > span {
+      display: block;
+      margin: 10px auto 5px auto;
+      width: 80%;
+      height: 80%;
+      min-height: 88px;
+      @include background-size(cover !important);
+    }
+  }
+  li:nth-child(3n) {
+    @include span-columns(4 omega, 12);
+  }
+}
+
+span.tm-filter-location-off-road { background: transparent url("icon_offroad.png") no-repeat 0 0; }
+span.tm-filter-location-paved-trail { background: transparent url("icon_pavedtrails.png") no-repeat 0 0; }
+span.tm-filter-location-road { background: transparent url("icon_roads.png") no-repeat 0 0; }
+
+span.tm-filter-skill-beginner { background: transparent url("icon_beginner.png") no-repeat 0 0; }
+span.tm-filter-skill-intermediate { background: transparent url("icon_intermediate.png") no-repeat 0 0; }
+span.tm-filter-skill-advanced { background: transparent url("icon_advanced.png") no-repeat 0 0; }
 
 
 ol#tm-matches > li.tm-match,

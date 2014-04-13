@@ -1,26 +1,67 @@
 <h1>Filters</h1>
 
+<br />
+<br />
+<br />
+<br />
+
 <ul class="tm-filter-location">
-  <li ng-class="{ 'tm-filter-true' : filters['location']['offroad'] == true }" ng-click="filters['location']['offroad'] = !filters['location']['offroad']">Off Road</li>
-  <li ng-class="{ 'tm-filter-true' : filters['location']['paved_trail'] == true }" ng-click="filters['location']['paved_trail'] = !filters['location']['paved_trail']">Paved Trail</li>
-  <li ng-class="{ 'tm-filter-true' : filters['location']['road'] == true }" ng-click="filters['location']['road'] = !filters['location']['road']">Road</li>
+  <li ng-class="{ 'tm-filter-true' : filters['location']['offroad'] == true }" ng-click="filters['location']['offroad'] = !filters['location']['offroad']">
+    <span class="tm-filter-location-off-road">&nbsp;</span>
+    Off Road
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['location']['paved_trail'] == true }" ng-click="filters['location']['paved_trail'] = !filters['location']['paved_trail']">
+    <span class="tm-filter-location-paved-trail">&nbsp;</span>
+    Paved Roads
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['location']['road'] == true }" ng-click="filters['location']['road'] = !filters['location']['road']">
+    <span class="tm-filter-location-road">&nbsp;</span>
+    Roads
+  </li>
 </ul>
 <!-- .tm-filter-location -->
 
 <ul class="tm-filter-scene">
-  <li ng-class="{ 'tm-filter-true' : filters['scene']['weekend_warrior'] == true }" ng-click="filters['scene']['weekend_warrior'] = !filters['scene']['weekend_warrior']">Weekend Warrior</li>
-  <li ng-class="{ 'tm-filter-true' : filters['scene']['commuter'] == true }" ng-click="filters['scene']['commuter'] = !filters['scene']['commuter']">Commuter</li>
-  <li ng-class="{ 'tm-filter-true' : filters['scene']['mountain'] == true }" ng-click="filters['scene']['mountain'] = !filters['scene']['mountain']">Mountain Bikes</li>
-  <li ng-class="{ 'tm-filter-true' : filters['scene']['fixies'] == true }" ng-click="filters['scene']['fixies'] = !filters['scene']['fixies']">Fixed Gear</li>
-  <li ng-class="{ 'tm-filter-true' : filters['scene']['social'] == true }" ng-click="filters['scene']['social'] = !filters['scene']['social']">Social</li>
-  <li ng-class="{ 'tm-filter-true' : filters['scene']['roadie'] == true }" ng-click="filters['scene']['roadie'] = !filters['scene']['roadie']">Roadie</li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['weekend_warrior'] == true }" ng-click="filters['scene']['weekend_warrior'] = !filters['scene']['weekend_warrior']">
+    <span class="tm-filter-location-paved-trail">&nbsp;</span>
+    Weekender
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['commuter'] == true }" ng-click="filters['scene']['commuter'] = !filters['scene']['commuter']">
+    <span class="tm-filter-location-paved-trail">&nbsp;</span>
+    Commuter
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['mountain'] == true }" ng-click="filters['scene']['mountain'] = !filters['scene']['mountain']">
+    <span class="tm-filter-location-paved-trail">&nbsp;</span>
+    Mountains
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['fixies'] == true }" ng-click="filters['scene']['fixies'] = !filters['scene']['fixies']">
+    <span class="tm-filter-location-paved-trail">&nbsp;</span>
+    Fixed Gear
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['social'] == true }" ng-click="filters['scene']['social'] = !filters['scene']['social']">
+    <span class="tm-filter-location-paved-trail">&nbsp;</span>
+    Social
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['scene']['roadie'] == true }" ng-click="filters['scene']['roadie'] = !filters['scene']['roadie']">
+    <span class="tm-filter-location-paved-trail">&nbsp;</span>
+    Roadie
+  </li>
 </ul>
 <!-- .tm-filter-scene -->
 
 <ul class="tm-filter-skill">
-  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'beginner' }" ng-click="filters['skill'] = 'beginner'">Beginner</li>
-  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'intermediate' }" ng-click="filters['skill'] = 'intermediate'">Intermediate</li>
-  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'advanced' }" ng-click="filters['skill'] = 'advanced'">Advanced</li>
+  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'beginner' }" ng-click="filters['skill'] = 'beginner'">
+    <span class="tm-filter-skill-beginner">&nbsp;</span>
+    Beginner
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'intermediate' }" ng-click="filters['skill'] = 'intermediate'">
+    <span class="tm-filter-skill-intermediate">&nbsp;</span>
+    Intermediate
+  </li>
+  <li ng-class="{ 'tm-filter-true' : filters['skill'] == 'advanced' }" ng-click="filters['skill'] = 'advanced'">
+    <span class="tm-filter-skill-advanced">&nbsp;</span>
+    Advanced
+  </li>
 </ul>
 <!-- .tm-filter-skill -->
 
