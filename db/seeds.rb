@@ -18,7 +18,7 @@ valid_availabilities = ["", "Morning", "Afternoon", "Evening"]
     :json   => {
       :age    => ( rand(25) + 18 ),
       :first_name => "",
-      :location => "",
+      :city => "",
       :gender => ( rand(2) == 0 ? "male" : "female" ),
       :location => {
         :offroad          => rand(2) == 0,
