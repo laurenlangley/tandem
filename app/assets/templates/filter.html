@@ -72,38 +72,38 @@
 
 <h5>Filter Availability:</h5>
 <ul class="tm-filter-availability">
-  <li ng-click="cycleAvailability('sunday', filters['availability']['sunday']);">
-    <span class="tm-filter-skill-advanced">&nbsp;</span>
+  <li ng-class="{ 'tm-filter-true' : filters['availability']['sunday'] != 'None' }" ng-click="cycleAvailability('sunday', filters['availability']['sunday']);">
+    <span ng-class="evaluateDay(filters['availability']['sunday'])">&nbsp;</span>
     Sunday:<br />
     {{filters['availability']['sunday']}}
   </li>
-  <li ng-click="cycleAvailability('monday', filters['availability']['monday']);">
-    <span class="tm-filter-skill-advanced">&nbsp;</span>
+  <li ng-class="{ 'tm-filter-true' : filters['availability']['monday'] != 'None' }" ng-click="cycleAvailability('monday', filters['availability']['monday']);">
+    <span ng-class="evaluateDay(filters['availability']['monday'])">&nbsp;</span>
     Monday:<br />
     {{filters['availability']['monday']}}
   </li>
-  <li ng-click="cycleAvailability('tuesday', filters['availability']['tuesday']);">
-    <span class="tm-filter-skill-advanced">&nbsp;</span>
+  <li ng-class="{ 'tm-filter-true' : filters['availability']['tuesday'] != 'None' }" ng-click="cycleAvailability('tuesday', filters['availability']['tuesday']);">
+    <span ng-class="evaluateDay(filters['availability']['tuesday'])">&nbsp;</span>
     Tuesday:<br />
     {{filters['availability']['tuesday']}}
   </li>
-  <li ng-click="cycleAvailability('wednesday', filters['availability']['wednesday']);">
-    <span class="tm-filter-skill-advanced">&nbsp;</span>
+  <li ng-class="{ 'tm-filter-true' : filters['availability']['wednesday'] != 'None' }" ng-click="cycleAvailability('wednesday', filters['availability']['wednesday']);">
+    <span ng-class="evaluateDay(filters['availability']['wednesday'])">&nbsp;</span>
     Wednesday:<br />
     {{filters['availability']['wednesday']}}
   </li>
-  <li ng-click="cycleAvailability('thursday', filters['availability']['thursday']);">
-    <span class="tm-filter-skill-advanced">&nbsp;</span>
+  <li ng-class="{ 'tm-filter-true' : filters['availability']['thursday'] != 'None' }" ng-click="cycleAvailability('thursday', filters['availability']['thursday']);">
+    <span ng-class="evaluateDay(filters['availability']['thursday'])">&nbsp;</span>
     Thursday:<br />
     {{filters['availability']['thursday']}}
   </li>
-  <li ng-click="cycleAvailability('friday', filters['availability']['friday']);">
-    <span class="tm-filter-skill-advanced">&nbsp;</span>
+  <li ng-class="{ 'tm-filter-true' : filters['availability']['friday'] != 'None' }" ng-click="cycleAvailability('friday', filters['availability']['friday']);">
+    <span ng-class="evaluateDay(filters['availability']['friday'])">&nbsp;</span>
     Friday:<br />
     {{filters['availability']['friday']}}
   </li>
-  <li ng-click="cycleAvailability('saturday', filters['availability']['saturday']);">
-    <span class="tm-filter-skill-advanced">&nbsp;</span>
+  <li ng-class="{ 'tm-filter-true' : filters['availability']['saturday'] != 'None' }" ng-click="cycleAvailability('saturday', filters['availability']['saturday']);">
+    <span ng-class="evaluateDay(filters['availability']['saturday'])">&nbsp;</span>
     Saturday:<br />
     {{filters['availability']['saturday']}}
   </li>
