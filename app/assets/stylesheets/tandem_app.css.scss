@@ -702,6 +702,7 @@ ol#tm-matches > li.tm-match,
     @include span-columns(12 omega, 12);
     .tm-match-image {
       min-height: 104px;
+      max-height: 104px;
       background: $grey;
       @include border-radius(2px);
       @include screen-format(phone) {
@@ -713,7 +714,7 @@ ol#tm-matches > li.tm-match,
       text-align: center;
       overflow:hidden;
       img {
-        height: 104px;
+        width: 100%;
       }
     }
     .tm-match-data {
@@ -788,6 +789,9 @@ ol.tm-match-days {
 
 .tm-tag.tm-tag-grey {
   background: $grey;
+  a {
+    color: $white;
+  }
 }
 .tm-tag {
   display: inline-block;

@@ -39,7 +39,7 @@
     <span class="tm-tag" ng-if="match.data['scene']['fixies'] == true">Fixed Gear</span>
     <span class="tm-tag" ng-if="match.data['scene']['social'] == true">Social</span>
     <span class="tm-tag" ng-if="match.data['scene']['roadie'] == true">Roadie</span>
-    <span class="tm-tag tm-tag-grey"><a ng-href="/profile/{{match.id}}">See More ...</a></span>
+    <a ng-href="/profile/{{match.id}}" class="tm-tag tm-tag-grey">See More ...</a>
 
     <ol class="tm-match-days">
       <li ng-class="evaluateDay(match.data['availability']['sunday']);">Su</li>
