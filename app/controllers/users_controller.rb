@@ -9,6 +9,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def current
+    @user = current_user
+    if @user.nil?
+      head :not_found and return
+    else
+      render :show
+    end
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

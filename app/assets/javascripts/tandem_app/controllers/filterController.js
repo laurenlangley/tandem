@@ -4,7 +4,7 @@ TandemApp.controller("catalogController", ["$scope", "httpService", "$rootScope"
   $scope.dataModel = {};
 
   // This is the string that defines where the JSON endpoint resides.
-  var apiEndpoint = '/path/to/endpoint.json';
+  var apiEndpoint = '/users/current.json';
 
   // This is the callback function that executes if the HTTP requests returns successfully.
   var getCatalogSuccess = function(payload, status) {
