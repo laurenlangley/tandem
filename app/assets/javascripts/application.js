@@ -30,7 +30,11 @@
 //= require tandem_app/routes
 //
 //  ANGULAR: Core AngularCatalog App Controllers
-//= require tandem_app/controllers/settingsController
+//= require tandem_app/controllers/filterController
+//= require tandem_app/controllers/editProfileController
+//= require tandem_app/controllers/matchesController
+//= require tandem_app/controllers/profileController
+//= require tandem_app/controllers/messagesController
 //
 //  ANGULAR: Core AngularCatalog App Services
 //= require tandem_app/services/httpService
