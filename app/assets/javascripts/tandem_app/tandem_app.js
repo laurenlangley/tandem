@@ -7,7 +7,6 @@ var TandemApp = angular.module("TandemApp", ["ngRoute", "ui.bootstrap", "ngSanit
 // Global Modal Open.
 TandemApp.run(["$rootScope", "$route", function($rootScope, $route) {
 
-  console.log( localStorage["filters"] )
   if( localStorage["filters"] )
     $rootScope.filters = JSON.parse( localStorage["filters"] );
   else{

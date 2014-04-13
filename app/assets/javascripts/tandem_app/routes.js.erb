@@ -6,6 +6,7 @@ TandemApp.config(["$routeProvider", "$locationProvider", function($routeProvider
   }).
   when('/edit_profile', {
     templateUrl: '<%= asset_path("edit_profile.html") %>',
+    controller: 'editProfileController',
     activetab: 'edit_profile'
   }).
   when('/filter', {

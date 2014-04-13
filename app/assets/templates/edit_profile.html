@@ -2,35 +2,41 @@
 
   <header>
     <div class="tm-match-image">
-      <img ng-src="{{user.data['image_large']}}" />
+      <img ng-src="{{dataModel['image_large']}}" />
     </div>
     <!-- .tm-match-image -->
     <div class="tm-match-data">
-      <h3>{{user.data["first_name"]}}</h3>
-      <h4><span>{{user.score}}% Match</span> | {{user.data["gender"]}}, {{user.data["age"]}}</h4>
-      <span class="tm-tag" ng-if="user.data['skill']['beginner'] == true">Beginner</span>
-      <span class="tm-tag" ng-if="user.data['skill']['intermediate'] == true">Intermediate</span>
-      <span class="tm-tag" ng-if="user.data['skill']['advanced'] == true">Advanced</span>
-      <span class="tm-tag" ng-if="
-      user.data['skill']['beginner'] == false && 
-      user.data['skill']['intermediate'] == false && 
-      user.data['skill']['advanced'] == false">Experience Unspecified</span>
+      <h3>{{dataModel.data["first_name"]}}</h3>
+      <h4>{{dataModel.data["gender"]}}, {{dataModel.data["age"]}}</h4>
     </div>
     <!-- .tm-match-data -->
   </header>
-  <p>{{user.data["summary"]}}</p>
+
 
   <hr />
 
-  <h5>My Favorite Places to Ride ...</h5>
+  <h5>My Experience Level ...</h5>
   <ul class="tm-list-small">
-    <li ng-if="user.data['location']['offroad'] == true">Off Road</li>
-    <li ng-if="user.data['location']['paved_trail'] == true">Paved Trail</li>
-    <li ng-if="user.data['location']['road'] == true">Road</li>
-    <li ng-if="
-      user.data['location']['offroad'] == false &&
-      user.data['location']['paved_trail'] == false &&
-      user.data['location']['road'] == false">I ride anywhere!</li>
+    <select ng-model="selectedExperience" ng-change="changeExperience( selectedExperience )">
+      <option value="">Please Select...</option>
+      <option ng-selected="user.data['skill']['beginner']" value="beginner">Beginner</option>
+      <option ng-selected="user.data['skill']['intermediate']" value="intermediate">Intermediate</option>
+      <option ng-selected="user.data['skill']['advaned']" value="advaned">Advanced</option>
+    </select>
+
+  </ul>
+  <!-- .tm-list-small -->
+
+  <hr />
+
+  <h5>My Favorite Place to Ride ...</h5>
+  <ul class="tm-list-small">
+    <select ng-model="selectedLocation" ng-change="changeLocation( selectedLocation )">
+      <option value="">I ride anywhere!</option>
+      <option ng-selected="user.data['location']['offroad']" value="offroad">Off Road</option>
+      <option ng-selected="user.data['location']['paved_trail']" value="paved_trail">Paved Trail</option>
+      <option ng-selected="user.data['location']['road']" value="road">Roads</option>
+    </select>
   </ul>
   <!-- .tm-list-small -->
 
@@ -38,15 +44,13 @@
 
   <h5>I Like to Ride For ...</h5>
   <ul class="tm-list-small">
-    <li ng-if="user.data['looking_for']['training'] == true">Training</li>
-    <li ng-if="user.data['looking_for']['fun'] == true">Fun</li>
-    <li ng-if="user.data['looking_for']['commuting'] == true">Commuting</li>
-    <li ng-if="user.data['looking_for']['destination'] == true">Destination</li>
-    <li ng-if="
-      user.data['looking_for']['training'] == false &&
-      user.data['looking_for']['fun'] == false &&
-      user.data['looking_for']['commuting'] == false &&
-      user.data['looking_for']['destination'] == false">I don't need a reason to ride!</li>
+    <select ng-model="selectedLooking" ng-change="changeLooking( selectedLooking )">
+      <option value="">I don't need a reason to ride!</option>
+      <option ng-selected="user.data['looking_for']['training']" value="training">Training</option>
+      <option ng-selected="user.data['looking_for']['fun']" value="fun">Fun</option>
+      <option ng-selected="user.data['looking_for']['commuting']" value="commuting">Commuting</option>
+      <option ng-selected="user.data['looking_for']['destination']" value="destination">Destination</option>
+    </select>
   </ul>
   <!-- .tm-list-small -->
 
@@ -54,19 +58,15 @@
 
   <h5>My Bike Identity Is ...</h5>
   <ul class="tm-list-small">
-    <li ng-if="user.data['scene']['weekend_warrior'] == true">Weekend Warrior</li>
-    <li ng-if="user.data['scene']['commuter'] == true">Commuter</li>
-    <li ng-if="user.data['scene']['mountain'] == true">Mountain Biking</li>
-    <li ng-if="user.data['scene']['fixies'] == true">Fixed Gear</li>
-    <li ng-if="user.data['scene']['social'] == true">Social</li>
-    <li ng-if="user.data['scene']['roadie'] == true">Roadie</li>
-    <li ng-if="
-      user.data['scene']['commuter'] == false &&
-      user.data['scene']['weekend_warrior'] == false &&
-      user.data['scene']['mountain'] == false &&
-      user.data['scene']['fixies'] == false &&
-      user.data['scene']['social'] == false &&
-      user.data['scene']['roadie'] == false">I'll ride with anyone!</li>
+    <select ng-model="selectedScene" ng-change="changeScene( selectedScene )">
+      <option value="">I'll ride with anyone!</option>
+      <option ng-selected="user.data['scene']['weekend_warrior']" value="weekend_warrior">Weekend Warrior</option>
+      <option ng-selected="user.data['scene']['commuter']" value="commuter">Commuter</option>
+      <option ng-selected="user.data['scene']['mountain']" value="mountain">Mountain Biking</option>
+      <option ng-selected="user.data['scene']['fixies']" value="fixies">Fixed Gear</option>
+      <option ng-selected="user.data['scene']['social']" value="social">Social</option>
+      <option ng-selected="user.data['scene']['roadie']" value="roadie">Roadie</option>
+    </select>
   </ul>
   <!-- .tm-list-small -->
 
@@ -77,38 +77,73 @@
   <ul class="tm-list-small">
     <li>
       <strong>Sundays:</strong> 
-      <span ng-if="user.data['availability']['sunday']">{{user.data['availability']['sunday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="user.data['availability']['sunday']">{{dataModel.data['availability']['sunday']}}</span>
+      <select ng-model="selectedSchedule['sunday']" ng-change="changeSchedule( 'sunday', selectedSchedule['sunday'] )">>
+        <option value="">Off Day</option>
+        <option ng-selected="user.data['availability']['sunday'] == 'Morning'">Morning</option>
+        <option ng-selected="user.data['availability']['sunday'] == 'Afternoon'">Afternoon</option>
+        <option ng-selected="user.data['availability']['sunday'] == 'Evening'">Evening</option>
+      </select>
     </li>
     <li>
       <strong>Mondays:</strong> 
-      <span ng-if="user.data['availability']['monday']">{{user.data['availability']['monday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="user.data['availability']['monday']">{{dataModel.data['availability']['monday']}}</span>
+      <select ng-model="selectedSchedule['monday']" ng-change="changeSchedule( 'monday', selectedSchedule['monday'] )">>
+        <option value="">Off Day</option>
+        <option ng-selected="user.data['availability']['monday'] == 'Morning'">Morning</option>
+        <option ng-selected="user.data['availability']['monday'] == 'Afternoon'">Afternoon</option>
+        <option ng-selected="user.data['availability']['monday'] == 'Evening'">Evening</option>
+      </select>
     </li>
     <li>
       <strong>Tuesdays:</strong> 
-      <span ng-if="user.data['availability']['tuesday']">{{user.data['availability']['tuesday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="user.data['availability']['tuesday']">{{dataModel.data['availability']['tuesday']}}</span>
+      <select ng-model="selectedSchedule['tuesday']" ng-change="changeSchedule( 'tuesday', selectedSchedule['tuesday'] )">>
+        <option value="">Off Day</option>
+        <option ng-selected="user.data['availability']['tuesday'] == 'Morning'">Morning</option>
+        <option ng-selected="user.data['availability']['tuesday'] == 'Afternoon'">Afternoon</option>
+        <option ng-selected="user.data['availability']['tuesday'] == 'Evening'">Evening</option>
+      </select>
     </li>
     <li>
       <strong>Wednesdays:</strong> 
-      <span ng-if="user.data['availability']['wednesday']">{{user.data['availability']['wednesday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="user.data['availability']['wednesday']">{{dataModel.data['availability']['wednesday']}}</span>
+      <select ng-model="selectedSchedule['wednesday']" ng-change="changeSchedule( 'wednesday', selectedSchedule['wednesday'] )">>
+        <option value="">Off Day</option>
+        <option ng-selected="user.data['availability']['wednesday'] == 'Morning'">Morning</option>
+        <option ng-selected="user.data['availability']['wednesday'] == 'Afternoon'">Afternoon</option>
+        <option ng-selected="user.data['availability']['wednesday'] == 'Evening'">Evening</option>
+      </select>
     </li>
     <li>
       <strong>Thursdays:</strong> 
-      <span ng-if="user.data['availability']['thursday']">{{user.data['availability']['thursday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="user.data['availability']['thursday']">{{dataModel.data['availability']['thursday']}}</span>
+      <select ng-model="selectedSchedule['thursday']" ng-change="changeSchedule( 'thursday', selectedSchedule['thursday'] )">>
+        <option value="">Off Day</option>
+        <option ng-selected="user.data['availability']['thursday'] == 'Morning'">Morning</option>
+        <option ng-selected="user.data['availability']['thursday'] == 'Afternoon'">Afternoon</option>
+        <option ng-selected="user.data['availability']['thursday'] == 'Evening'">Evening</option>
+      </select>
     </li>
     <li>
       <strong>Fridays:</strong> 
-      <span ng-if="user.data['availability']['friday']">{{user.data['availability']['friday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="user.data['availability']['friday']">{{dataModel.data['availability']['friday']}}</span>
+      <select ng-model="selectedSchedule['friday']" ng-change="changeSchedule( 'friday', selectedSchedule['friday'] )">>
+        <option value="">Off Day</option>
+        <option ng-selected="user.data['availability']['friday'] == 'Morning'">Morning</option>
+        <option ng-selected="user.data['availability']['friday'] == 'Afternoon'">Afternoon</option>
+        <option ng-selected="user.data['availability']['friday'] == 'Evening'">Evening</option>
+      </select>
     </li>
     <li>
       <strong>Saturdays:</strong> 
-      <span ng-if="user.data['availability']['saturday']">{{user.data['availability']['saturday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="user.data['availability']['saturday']">{{dataModel.data['availability']['saturday']}}</span>
+      <select ng-model="selectedSchedule['saturday']" ng-change="changeSchedule( 'saturday', selectedSchedule['saturday'] )">>
+        <option value="">Off Day</option>
+        <option ng-selected="user.data['availability']['saturday'] == 'Morning'">Morning</option>
+        <option ng-selected="user.data['availability']['saturday'] == 'Afternoon'">Afternoon</option>
+        <option ng-selected="user.data['availability']['saturday'] == 'Evening'">Evening</option>
+      </select>
     </li>
   </ul>
   <!-- .tm-list-small -->
@@ -118,8 +153,7 @@
   <h5>Here's How I Introduce Myself ...</h5>
 
   <ul class="tm-list-small">
-    <li ng-if="user.data['summary']">{{user.data['summary']}}</li>
-    <li ng-if="!user.data['summary']">I'll fill this out later.</li>
+    <textarea ng-model="selectedSummary" ng-change="changeSummary( selectedSummary )">{{dataModel.data['summary']}}</textarea>
   </ul>
   <!-- .tm-list-small -->
 

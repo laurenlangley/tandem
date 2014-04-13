@@ -31,13 +31,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+    json      = params[:user][:data].to_json if params[:user][:data].present?
+
     respond_to do |format|
-
-      up        = user_params
-      up[:json] = up[:data].as_json if up[:data].present?
-      up        = up.except(:data)
-
-      if @user.update( up )
+      if json.present? && @user.update( :json => json )
         format.json { head :no_content }
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -52,6 +50,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :data, :name, :image)
+      params.require(:user).permit(:data)
     end
 end
