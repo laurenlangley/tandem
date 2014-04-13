@@ -1,14 +1,14 @@
-TandemApp.controller("filterController", ["$scope", "httpService", "$rootScope", "$timeout", "$http", function($scope, httpService, $rootScope, $timeout, $http) {
+TandemApp.controller("matchesController", ["$scope", "httpService", "$rootScope", "$timeout", "$http", function($scope, httpService, $rootScope, $timeout, $http) {
 
   // This is the main data model.
-  $scope.dataModel = {};
+  $scope.dataModel = null;
 
   // This is the string that defines where the JSON endpoint resides.
-  var apiEndpoint = '/users/current.json';
+  var apiEndpoint = '/users.json';
 
   // This is the callback function that executes if the HTTP requests returns successfully.
   var getCatalogSuccess = function(payload, status) {
-    $scope.dataModel = payload.data;
+    $scope.dataModel = payload;
   };
 
   // This is the callback function that executes if the HTTP requests returns unsuccessfully.
