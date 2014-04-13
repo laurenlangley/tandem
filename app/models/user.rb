@@ -31,8 +31,7 @@ class User < ActiveRecord::Base
     ( 100 * (points / total.to_f) ).round
   end
 
-  def self.find_for_facebook_oauth(auth)\
-
+  def self.find_for_facebook_oauth(auth)
     u = User.where( auth.slice(:provider, :uid) ).first_or_create do |user|
       user.provider   = auth.provider
       user.uid        = auth.uid
@@ -45,6 +44,8 @@ class User < ActiveRecord::Base
     u.json          = "{}" if u.json.nil?
     json = JSON.parse( u.json )
     json[:gender]   = auth.extra.raw_info.gender if auth.extra.raw_info.gender.present?
+    json[:first_name] = auth.info.first_name if auth.info.first_name.present?
+    json[:location] = auth.info.location if auth.info.location.present?
 
     begin
       d = Date.parse( auth.extra.raw_info.birthday )

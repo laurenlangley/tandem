@@ -17,6 +17,8 @@ valid_availabilities = ["", "Morning", "Afternoon", "Evening"]
     :image  => Faker::Avatar.image,
     :json   => {
       :age    => ( rand(25) + 18 ),
+      :first_name => "",
+      :location => "",
       :gender => ( rand(2) == 0 ? "male" : "female" ),
       :location => {
         :offroad          => rand(2) == 0,
@@ -28,7 +30,7 @@ valid_availabilities = ["", "Morning", "Afternoon", "Evening"]
         :commuter         => rand(2) == 0,
         :mountain         => rand(2) == 0,
         :fixies           => rand(2) == 0,
-        :social           => rand(2) == 0
+        :social           => rand(2) == 0,
         :roadie           => rand(2) == 0
       },
       :skill  => {
