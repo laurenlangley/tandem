@@ -1,10 +1,19 @@
 // Define some routes.
 TandemApp.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
-  $routeProvider.when('/app', {
+  $routeProvider.when('/', {
     templateUrl: '<%= asset_path("index.html") %>'
   }).
-  when('/', {
-    templateUrl: '<%= asset_path("index.html") %>'
+  when('/edit_profile', {
+    templateUrl: '<%= asset_path("edit_profile.html") %>'
+  }).
+  when('/filter', {
+    templateUrl: '<%= asset_path("filter.html") %>'
+  }).
+  when('/matches', {
+    templateUrl: '<%= asset_path("matches.html") %>'
+  }).
+  when('/profile', {
+    templateUrl: '<%= asset_path("profile.html") %>'
   }).
   otherwise({
     templateUrl: '<%= asset_path("index.html") %>'

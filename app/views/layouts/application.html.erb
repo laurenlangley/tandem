@@ -8,9 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-app="TandemApp">
 
-  <%= yield %>
+  <div id="tandem">
+
+    <%= render "shared/navigation" %>
+
+    <section ng-view>
+    </section>
+
+
+  </div>
+  <!-- #tandem -->
+
 
 </body>
 </html>

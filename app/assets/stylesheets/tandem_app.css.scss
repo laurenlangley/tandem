@@ -1,6 +1,5 @@
 @import "compass/reset";
 @import "compass/css3";
-@import "compass/css3/transform-legacy";
 @import "compass/utilities/general/clearfix";
 @import "compass/utilities/general/hacks";
 @import "susy";
@@ -17,8 +16,8 @@
       - Color Theme
       - Media Size Breakpoints
       - Susy Grid Settings
-      - Layout Sizing
       - Font Stacks
+      - Z Indices
 
   1.  Universal Cascade
       - Body
@@ -51,32 +50,28 @@
 /* Color Theme */
 /************************************************/
 
-$font-header-color: #404040;
-$font-body-color: #404040;
+$font-header-color: #333835;
+$font-body-color: #333835;
 
-$blue: #54a4a3;
 $red: #ee3a2e;
+$blue: #54a4a3;
 $beige: #dfdcca;
 $charcoal: #333835;
+
 $white: #ffffff;
-$line-color: #333835;
 
 
 /* Media Size Breakpoints */
 /************************************************/
 
-$cinema-breakpoint: 1900px;
 $monitor-breakpoint: 1200px;
 $laptop-breakpoint: 980px;
 $tablet-breakpoint: 768px;
 $phone-breakpoint: 480px;
 
 @mixin screen-format($media-type) {
-  @if $media-type == cinema {
-    @media (min-width: $cinema-breakpoint) { @content; }
-  }
   @if $media-type == monitor {
-    @media (min-width: $monitor-breakpoint) and (max-width: $cinema-breakpoint - 1) { @content; }
+    @media (min-width: $monitor-breakpoint) { @content; }
   }
   @else if $media-type == laptop {
     @media (min-width: $laptop-breakpoint) and (max-width: $monitor-breakpoint - 1) { @content; }
@@ -92,20 +87,19 @@ $phone-breakpoint: 480px;
   }
 }
 
-
 /* Susy Grid Settings */
 /************************************************/
 
-$total-columns:   4;
-$column-width:    114px;
-$gutter-width:    40px;
-$grid-padding:    0;
+$total-columns: 12;
+$column-width: 56px;
+$gutter-width: 48px;
+$grid-padding: 0;
 
 
 /* Font Stacks */
 /************************************************/
 
-$header-font: 'Montserrat', 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$accent-font: 'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 $body-font: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
 $symbolset-standard: "SSStandard";
@@ -123,7 +117,6 @@ $symbolset-social: "SSSocial";
 
 html {
   height: 100%;
-  overflow: hidden;
 }
 
 
@@ -131,27 +124,41 @@ html {
 /************************************************/
 
 body {
-  width: 100%;
   height: 100%;
-  font-family: $body-font;
   font-size: 16px;
-  line-height: 25px;
-  font-weight: 400;
+  font-family: $body-font;
+  line-height: 30px;
   color: $font-body-color;
   -webkit-font-smoothing: antialiased;
-  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {}
 
 h1 {
-  @include screen-format(laptop) {}
-  @include screen-format(tablet) {}
-  @include screen-format(phone) {}
-  @include screen-format(nano) {}
+  font-family: $accent-font;
+  font-size: 84px;
+  line-height: 100px;
+  color: $font-header-color;
+  @include screen-format(nano) {
+    font-size: 64px;
+    line-height: 80px;
+  }
 }
-h2 {}
-h3 {}
+h2 {
+  font-family: $accent-font;
+  font-size: 50px;
+  line-height: 70px;
+  color: $font-header-color;
+  @include screen-format(nano) {
+    font-size: 40px;
+    line-height: 60px;
+  }
+}
+h3 {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 50px;
+}
 h4 {}
 h5 {}
 h6 {}
@@ -159,104 +166,50 @@ h6 {}
 hr {
   width: 100%;
   height: 1px;
-  margin: 15px 0 24px 0;
+  margin: 0;
   padding: 0;
   border: none;
-  color: $line-color;
-  background: $line-color;
+  color: $charcoal;
+  background: $charcoal;
 }
 
 strong { font-weight: 700; }
 em { font-style: italic; }
 
-p {}
-p.tm-paragraph-short {}
-
-ul.tm-unlinked-list {
-  width: 100%;
+p {
   margin: 0 0 20px 0;
-  padding: 0 0 0 30px;
-  list-style-type: disc;
-  @include box-sizing(border-box);
-  li {
-    width: 100%;
-    
-    @include box-sizing(border-box);
-  }
 }
 
-label,
-span.tm-form-label-basic {
+label {
   display: inline-block;
-}
-label:hover {
-  cursor: pointer;
 }
 
 input,
 textarea,
 select {
   display: inline-block;
-  margin: 0;
   font-family: $body-font;
-  font-size: 16px;
-  line-height: 25px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-input:disabled,
-textarea:disabled,
-select:disabled {
-  @include opacity(0.33);
-}
-
- .tm-input-disabled {
-  > *  {
-    @include opacity(0.33);
-  }
- }
-
-select {
-  height: 40px;
-  border: 1px solid $line-color;
-}
-
-textarea {
-  min-height: 100px;
-  resize: none;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-  cursor: pointer;
-}
+input:focus,
+textarea:focus,
+select:focus { outline: none; }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="file"],
 textarea {
-  padding: 5px 9px 8px 9px;
-  border: 1px solid $line-color;
+  padding: 8px 14px 10px 14px;
+  border: 1px solid $charcoal;
   color: $font-body-color;
-  -webkit-font-smoothing: antialiased;
   @include box-sizing(border-box);
   @include border-radius(2px);
 }
 
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="file"]:focus,
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none;
-  border: 1px solid $blue;
-}
-
 a {
-  color: $blue;
+  color: $red;
   cursor: pointer;
   text-decoration: none;
 }
@@ -264,37 +217,85 @@ a:hover {
   text-decoration: underline;
 }
 
+/* List Variations */
+/************************************************/
+
+ul.tm-list-small,
+ol.tm-list-small {
+  list-style-type: disc;
+  @include span-columns(8 omega, 12);
+  @include prefix(2);
+  @include suffix(2);
+  margin: 0 auto 30px auto;
+  @include screen-format(phone) {
+    @include span-columns(12 omega, 12);
+    @include prefix(0);
+    @include suffix(0);
+  }
+  @include screen-format(nano) {
+    @include span-columns(12 omega, 12);
+    @include prefix(0);
+    @include suffix(0);
+  }
+  li {
+    padding: 0 40px 0 0;
+    position: relative;
+    left: 40px;
+  }
+}
+
+/* Paragraph Variations */
+/************************************************/
+
+p.tm-disclaimer,
+p.tm-paragraph-small {
+  @include span-columns(8 omega, 12);
+  @include prefix(2);
+  @include suffix(2);
+  margin: 0 auto 30px auto;
+  @include screen-format(phone) {
+    @include span-columns(12 omega, 12);
+    @include prefix(0);
+    @include suffix(0);
+  }
+  @include screen-format(nano) {
+    @include span-columns(12 omega, 12);
+    @include prefix(0);
+    @include suffix(0);
+  }
+}
+
+p.tm-disclaimer {
+  font-size: 14px;
+  text-align: center;
+}
 
 /* Buttons */
 /************************************************/
-
-.tm-submit {
-  display: inline-block;
-  float: right;
-  width: 100%;
-}
 
 .tm-button,
 input[type="submit"],
 button {
   display: inline-block;
-  padding: 4px 20px 6px 20px;
+  padding: 9px 20px;
   margin: 0;
-  border: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: 2px solid $charcoal;
+  border-left: none;
   color: $white;
-  background: $font-header-color;
-  font-size: 18px;
+  background: $red;
+  font-size: 20px;
   font-weight: 700;
   font-family: $body-font;
   line-height: 30px;
+  text-transform: uppercase;
   cursor: pointer;
   position: relative;
-  text-align: center;
   -webkit-font-smoothing: antialiased;
   -webkit-appearance: none;
   @include box-sizing(border-box);
   @include border-radius(2px);
-  @include transition(opacity 0.1s linear);
 }
 
 .tm-button:active,
@@ -328,96 +329,288 @@ button:before {
   content: '';
 }
 
-input[type="submit"].tm-button-minor,
-button.tm-button-minor,
-.tm-button-minor {
-  padding: 2px 15px 2px 15px;
-  font-family: $header-font;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 20px;
-  text-transform: uppercase;
-  i.ss-icon {
-    position: relative;
-    top: 2px;
-  }
-}
-
-input[type="submit"].tm-button-major,
-button.tm-button-major,
-.tm-button-major {
-  padding: 3px 20px 7px 20px;
-  font-size: 25px;
-  line-height: 40px;
-}
-
-
-
-
-#tm-demo {
+#tandem {
   display: block;
   width: 100%;
   height: 100%;
-  position: relative;
-}
+  overflow: hidden;
 
+  a#tm-nav-expander {
+    display: none;
+    visibility: hidden;
+    position: fixed;
+    @include transition-property(left);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in); 
+    @include transition-delay(0);
+    @include screen-format(phone) {
+      display: block;
+      visibility: visible;
+      width: 100%;
+      height: 65px;
+      z-index: 600;
+      left: 0;
+      background: #ffffff image-url("nav-expander.png") no-repeat 30px 20px;
+      @include box-shadow(0 3px 3px -3px $charcoal);
+    }
+    @include screen-format(nano) {
+      display: block;
+      visibility: visible;
+      width: 100%;
+      height: 65px;
+      z-index: 600;
+      left: 0;
+      background: #ffffff image-url("nav-expander.png") no-repeat 30px 20px;
+      @include box-shadow(0 3px 3px -3px $charcoal);
+    }
+  }
 
+  a#tm-nav-expander:hover {
+    // @include opacity(.66);
+  }
 
-
-
-
-
-body.tm-nav-expanded #tandem {
-  left: 500px;
-}
-body.tm-nav-expanded #tm-top-bar {
-  left: 500px;
-}
-
-#tandem {
-  display: block;
-  width: 640px;
-  height: 1136px;  
-  background: $white;
-  position: absolute;
-  @include transition-property(left);
-  @include transition-duration(0.25s);
-  @include transition-timing-function(ease-in); 
-  @include transition-delay(0);
-}
-
-#tm-top-bar {
-  display: block;
-  width: 640px;
-  height: 80px;
-  background: $charcoal;
-  position: absolute;
-}
-
-nav {
-  display: block;
-  width: 640px;
-  height: 1136px;  
-  background: $beige;
-  position: absolute;
-  > ul {
-    > li {
-      > a {
-        font-family: $header-font;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: $charcoal;
-        font-size: 18px;
-        line-height: 20px;
+  > nav,
+  > section {
+    display: block;
+    float: left;
+    width: 100%;
+    .tm-container {
+      display: block;
+      padding: 0 20px;
+      margin: 0 auto;
+      @include legacy-pie-clearfix;
+      @include screen-format(monitor) {
+        width: $monitor-breakpoint - 40px; // The subtraction of 40px accounts for the container padding.
       }
+    }
+  }
+
+  > nav {
+    height: 130px;
+    position: fixed;
+    z-index: 500;
+    @include transition-property(box-shadow, margin, background, opacity);
+    @include transition-duration(0.15s, 0.15s, 0.15s, 0);
+    @include transition-timing-function(ease-in, ease-in, ease-in, ease-in); 
+    @include transition-delay(0, .05s, 0, .25s);
+    @include screen-format(phone) {
+      width: 360px;
+      height: 100%;
+      background: $charcoal;
+      z-index: 0;
+      text-align: center;
+      @include opacity(0);
+      @include transition-duration(0, 0, 0);
+    }
+    @include screen-format(nano) {
+      width: 256px;
+      height: 100%;
+      background: $charcoal;
+      z-index: 0;
+      text-align: center;
+      @include opacity(0);
+      @include transition-duration(0, 0, 0);
+    }
+    .tm-container {
+      @include screen-format(phone) {
+        padding: 0;
+      }
+      @include screen-format(nano) {
+        padding: 0;
+      }
+    }
+    a#tm-home-logo {
+      display: block;
+      float: left;
+      padding: 20px;
+      margin: 19px 0 0 -20px;
+      @include screen-format(phone) {
+        display: inline-block;
+        float: none;
+        margin: 19px auto 0 auto;
+        
+      }
+      @include screen-format(nano) {
+        display: inline-block;
+        float: none;
+        margin: 19px auto 0 auto;
+        text-align: center;
+      }
+      img {
+        display: block;
+        float: left;
+        width: 61px;
+        height: 54px;
+        @include screen-format(phone) {
+          display: inline-block;
+          float: none;
+        }
+        @include screen-format(nano) {
+          display: inline-block;
+          float: none;
+        }
+      }
+    }
+    a#tm-home-logo:hover {
+      @include opacity(.66);
+    }
+    ul#tm-menu {
+      display: block;
+      float: right;
+      padding: 50px 0;
+      @include screen-format(phone) {
+        width: 100%;
+        padding: 10px 0 0 0;
+        text-align: left;
+      }
+      @include screen-format(nano) {
+        width: 100%;
+        padding: 10px 0 0 0;
+        text-align: left;
+      }
+      > li {
+        display: block;
+        float: left;
+        margin: 0 0 0 40px;
+        @include screen-format(laptop) {
+          margin: 0 0 0 30px;
+        }
+        @include screen-format(tablet) {
+          margin: 0 0 0 10px;
+        }
+        @include screen-format(phone) {
+          width: 100%;
+          margin: 0;
+        }
+        @include screen-format(nano) {
+          width: 100%;
+          margin: 0;
+        }
+        > a {
+          display: block;
+          float: left;
+          padding: 5px 2px 14px 2px;
+          color: $font-header-color;
+          font-family: $accent-font;
+          text-transform: uppercase;
+          font-size: 13px;
+          line-height: 20px;
+          i.ss-icon {
+            display: none;
+          }
+          @include screen-format(phone) {
+            width: 100%;
+            padding: 9px 0 10px 20px;
+            color: $white;
+            @include box-sizing(border-box);
+            i.ss-icon {
+              display: inline;
+            }
+          }
+          @include screen-format(nano) {
+            width: 100%;
+            padding: 9px 0 10px 20px;
+            color: $white;
+            @include box-sizing(border-box);
+            i.ss-icon {
+              display: inline;
+            }
+          }
+        }
+      }
+      > li:hover,
+      > li#tm-menu-active-item {
+        > a {
+          border-bottom: 3px solid $red;
+          text-decoration: none;
+          @include screen-format(phone) {
+            border: none;
+            background: transparent image-url("opacity-white-33.png") repeat 0 0;
+          }
+          @include screen-format(nano) {
+            border: none;
+            background: transparent image-url("opacity-white-33.png") repeat 0 0;
+          }
+        }
+      }
+    }
+  }
+  > nav.tm-nav-shadow-state {
+    background: $white;
+    @include box-shadow(0 0 7px rgba(0, 0, 0, 0.25));
+    @include screen-format(phone) {
+      background: $charcoal;
+      @include box-shadow(none);
+    }
+    @include screen-format(nano) {
+      background: $charcoal;
+      @include box-shadow(none);
+    }
+  }
+  > nav.tm-nav-drop-state {
+    margin-top: -137px;
+  }
+  > nav.tm-nav-drop-state:hover {
+    margin-top: 0;
+  }
+
+  > section {
+    padding: 130px 0 0 0;
+    height: 100%;
+    position: relative;
+    background: $white;
+    overflow: scroll;
+    @include box-sizing(border-box);
+    @include transition-property(box-shadow, opacity);
+    @include transition-duration(0.25s, 0);
+    @include transition-delay(0.25s, 0);
+    @include transition-timing-function(ease-in, ease-in);
+  }
+
+}
+
+
+#tandem.tm-nav-expanded-state {
+  a#tm-nav-expander {
+    @include screen-format(phone) {
+      left: 360px;
+    }
+    @include screen-format(nano) {
+      left: 256px;
+    }
+  }
+  > nav {
+    @include opacity(1);
+    @include transition-property(box-shadow, opacity);
+    @include transition-duration(0.25s, 0);
+    @include transition-delay(0.25s, 0);
+    @include transition-timing-function(ease-in, ease-in);
+    @include screen-format(phone) {
+      display: block;
+      @include box-shadow(-2px 0px 7px -3px #000000 inset);
+    }
+    @include screen-format(nano) {
+      display: block;
+      @include box-shadow(-2px 0px 7px -3px #000000 inset);
+    }
+  }
+  > section {
+    @include screen-format(phone) {
+      left: 360px;
+      z-index: 520;
+    }
+    @include screen-format(nano) {
+      left: 256px;
+      z-index: 520;
     }
   }
 }
 
 
-nav                               { z-index: 100; }
-#tandem                           { z-index: 200; }
-#tm-top-bar                       { z-index: 250; }
+
+
+
+
 
 
 
