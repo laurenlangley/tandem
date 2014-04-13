@@ -617,26 +617,40 @@ button:before {
 }
 
 
-
+#tm-filters {
+  > h5 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: 200;
+    font-style: italic;
+  }
+}
 
 .tm-filter-true {
-  background-color: $blue;
+  background-color: #d1cdb5;
 }
 
 
 ul.tm-filter-scene,
+ul.tm-filter-availability,
 ul.tm-filter-location,
 ul.tm-filter-skill {
+  margin: 0 0 30px 0;
   @include span-columns(12 omega, 12);
   li {
-    padding: 0 0 5px 0;
+    padding: 0 0 10px 0;
     margin: 0 0 10px 0;
     text-align: center;
+    font-family: $accent-font;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 20px;
     @include span-columns(4, 12);
     @include border-radius(3px);
     > span {
       display: block;
-      margin: 10px auto 5px auto;
+      margin: 10px auto 10px auto;
       width: 80%;
       height: 80%;
       min-height: 88px;
@@ -655,6 +669,13 @@ span.tm-filter-location-road { background: transparent url("icon_roads.png") no-
 span.tm-filter-skill-beginner { background: transparent url("icon_beginner.png") no-repeat 0 0; }
 span.tm-filter-skill-intermediate { background: transparent url("icon_intermediate.png") no-repeat 0 0; }
 span.tm-filter-skill-advanced { background: transparent url("icon_advanced.png") no-repeat 0 0; }
+
+span.tm-filter-scene-fixie { background: transparent url("icon_fixie.png") no-repeat 0 0; }
+span.tm-filter-scene-mountainbiker { background: transparent url("icon_mountainbiker.png") no-repeat 0 0; }
+span.tm-filter-scene-roadie { background: transparent url("icon_roadie.png") no-repeat 0 0; }
+span.tm-filter-scene-socialrider { background: transparent url("icon_socialrider.png") no-repeat 0 0; }
+span.tm-filter-scene-commuter { background: transparent url("icon_weekdaycommuter.png") no-repeat 0 0; }
+span.tm-filter-scene-weekendwarrior { background: transparent url("icon_weekendwarrior.png") no-repeat 0 0; }
 
 
 ol#tm-matches > li.tm-match,
