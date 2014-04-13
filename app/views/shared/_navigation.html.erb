@@ -14,6 +14,7 @@
         <li><a href="/matches"><i class="ss-icon ss-heartuser"></i>Matches</a></li>
         <li><a href="/filter"><i class="ss-icon ss-home"></i>Filters</a></li>
         <li><a href="/messages"><i class="ss-icon ss-mail"></i>Messages</a></li>
+        <li><%= link_to "FB Auth", user_omniauth_authorize_path(:facebook), :target => "_self" %></li>
       </ul>
       <!-- #tm-menu -->
     </div>
