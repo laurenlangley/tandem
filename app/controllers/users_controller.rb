@@ -6,7 +6,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    
+    if current_user.present?
+      @users = User.where("id != ?", current_user.id).all.sort{|a, b| current_user.calculate_score(b) <=> current_user.calculate_score(a) }
+    else
+      @users = User.all
+    end
   end
 
   def current
