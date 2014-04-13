@@ -83,37 +83,37 @@
     <li>
       <strong>Sundays:</strong> 
       <span ng-if="user.data['availability']['sunday']">{{user.data['availability']['sunday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="!user.data['availability']['sunday'] || user.data['availability']['sunday'] == 'none'">Off day.</span>
     </li>
     <li>
       <strong>Mondays:</strong> 
       <span ng-if="user.data['availability']['monday']">{{user.data['availability']['monday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="!user.data['availability']['monday'] || user.data['availability']['monday'] == 'none'">Off day.</span>
     </li>
     <li>
       <strong>Tuesdays:</strong> 
       <span ng-if="user.data['availability']['tuesday']">{{user.data['availability']['tuesday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="!user.data['availability']['tuesday'] || user.data['availability']['tuesday'] == 'none'">Off day.</span>
     </li>
     <li>
       <strong>Wednesdays:</strong> 
       <span ng-if="user.data['availability']['wednesday']">{{user.data['availability']['wednesday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="!user.data['availability']['wednesday'] || user.data['availability']['wednesday'] == 'none'">Off day.</span>
     </li>
     <li>
       <strong>Thursdays:</strong> 
       <span ng-if="user.data['availability']['thursday']">{{user.data['availability']['thursday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="!user.data['availability']['thursday'] || user.data['availability']['thursday'] == 'none'">Off day.</span>
     </li>
     <li>
       <strong>Fridays:</strong> 
       <span ng-if="user.data['availability']['friday']">{{user.data['availability']['friday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="!user.data['availability']['friday'] || user.data['availability']['friday'] == 'none'">Off day.</span>
     </li>
     <li>
       <strong>Saturdays:</strong> 
       <span ng-if="user.data['availability']['saturday']">{{user.data['availability']['saturday']}}</span>
-      <span>Off day.</span>
+      <span ng-if="!user.data['availability']['saturday'] || user.data['availability']['saturday'] == 'none'">Off day.</span>
     </li>
   </ul>
   <!-- .tm-list-small -->
