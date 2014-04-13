@@ -359,24 +359,6 @@ button.tm-button-major,
   width: 100%;
   height: 100%;
   position: relative;
-  #tm-demo-iphone {
-    width: 754px;
-    height: 1561px;
-    background: transparent image-url("iphone.png") no-repeat top center;
-    #tm-demo-iphone-container {
-      width: 640px;
-      height: 1136px;
-      position: relative;
-      top: 223px;
-      left: 56px;
-      #tm-demo-viewport {
-        width: 640px;
-        height: 1136px;
-        position: relative;
-        overflow: hidden;
-      }
-    }
-  }
 }
 
 
