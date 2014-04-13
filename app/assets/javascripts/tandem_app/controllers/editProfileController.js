@@ -19,41 +19,27 @@ TandemApp.controller("editProfileController", ["$scope", "httpService", "$rootSc
       $scope.selectedExperience = "advanced"
 
 
-    if( $scope.dataModel.data["location"]["offroad"] )
-      $scope.selectedLocation = "offroad"
-    else if( $scope.dataModel.data["location"]["paved_trail"] )
-      $scope.selectedLocation = "paved_trail"
-    else if( $scope.dataModel.data["location"]["road"] )
-      $scope.selectedLocation = "road"
-
-
-    if( $scope.dataModel.data["looking_for"]["training"] )
-      $scope.selectedLooking = "training"
-    else if( $scope.dataModel.data["looking_for"]["fun"] )
-      $scope.selectedLooking = "fun"
-    else if( $scope.dataModel.data["looking_for"]["commuting"] )
-      $scope.selectedLooking = "commuting"
-    else if( $scope.dataModel.data["looking_for"]["destination"] )
-      $scope.selectedLooking = "destination"
-
-
-    if( $scope.dataModel.data["scene"]["weekend_warrior"] )
-      $scope.selectedScene = "weekend_warrior"
-    else if( $scope.dataModel.data["scene"]["commuter"] )
-      $scope.selectedScene = "commuter"
-    else if( $scope.dataModel.data["scene"]["mountain"] )
-      $scope.selectedScene = "mountain"
-    else if( $scope.dataModel.data["scene"]["fixies"] )
-      $scope.selectedScene = "fixies"
-    else if( $scope.dataModel.data["scene"]["social"] )
-      $scope.selectedScene = "social"
-    else if( $scope.dataModel.data["scene"]["roadie"] )
-      $scope.selectedScene = "roadie"
+    updateOthers();
 
     $scope.selectedSchedule = $scope.dataModel.data['availability'];
     $scope.selectedSummary = $scope.dataModel.data['summary']
 
   };
+
+  var updateOthers = function(){
+    console.log( "update others")
+    for( var k in $scope.dataModel.data["location"] ){
+      if( $scope.dataModel.data["location"][k] ) $scope.otherLocation = false;
+    }
+
+    for( var k in $scope.dataModel.data["looking_for"] ){
+      if( $scope.dataModel.data["looking_for"][k] ) $scope.otherLooking = false;
+    }
+
+    for( var k in $scope.dataModel.data["scene"] ){
+      if( $scope.dataModel.data["scene"][k] ) $scope.otherScene = false;
+    }
+  }
 
   // This is the callback function that executes if the HTTP requests returns unsuccessfully.
   var getUserFailusre = function(payload, status) {};
@@ -66,48 +52,36 @@ TandemApp.controller("editProfileController", ["$scope", "httpService", "$rootSc
     $scope.dataModel.data["skill"]["beginner"] = ( exp == "beginner");
     $scope.dataModel.data["skill"]["intermediate"] = ( exp == "intermediate");
     $scope.dataModel.data["skill"]["advanced"] = ( exp == "advanced");
-    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){console.log("success");});
+    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){updateOthers();console.log("success");});
   };
 
-  $scope.selectedLocation = "";
-  $scope.changeLocation = function(exp){
-    $scope.dataModel.data["location"]["offroad"] = ( exp == "offroad");
-    $scope.dataModel.data["location"]["paved_trail"] = ( exp == "paved_trail");
-    $scope.dataModel.data["location"]["road"] = ( exp == "road");
-    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){console.log("success");});
+  $scope.otherLocation = true;
+  $scope.changeLocation = function(){
+    console.log($scope.dataModel)
+    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){updateOthers();console.log("success");});
   };
 
-  $scope.selectedLooking = "";
-  $scope.changeLooking = function(exp){
-    $scope.dataModel.data["looking_for"]["training"] = ( exp == "training");
-    $scope.dataModel.data["looking_for"]["fun"] = ( exp == "fun");
-    $scope.dataModel.data["looking_for"]["commuting"] = ( exp == "commuting");
-    $scope.dataModel.data["looking_for"]["destination"] = ( exp == "destination");
-    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){console.log("success");});
+  $scope.otherLooking = true;
+  $scope.changeLooking = function(){
+    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){updateOthers();console.log("success");});
   };
 
-  $scope.selectedScene = "";
-  $scope.changeScene = function(exp){
-    $scope.dataModel.data["scene"]["weekend_warrior"] = ( exp == "weekend_warrior");
-    $scope.dataModel.data["scene"]["commuter"] = ( exp == "commuter");
-    $scope.dataModel.data["scene"]["mountain"] = ( exp == "mountain");
-    $scope.dataModel.data["scene"]["fixies"] = ( exp == "fixies");
-    $scope.dataModel.data["scene"]["social"] = ( exp == "social");
-    $scope.dataModel.data["scene"]["roadie"] = ( exp == "roadie");
-    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){console.log("success");});
+  $scope.otherScene = true;
+  $scope.changeScene = function(){
+    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){updateOthers();console.log("success");});
   };
 
   $scope.selectedSchedule = {};
   $scope.changeSchedule = function(day, exp){
     $scope.dataModel.data["availability"][day] = exp;
-    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){console.log("success");});
+    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){updateOthers();console.log("success");});
   };
 
   $scope.selectedSummary = {};
   $scope.changeSummary = function(exp){
     console.log(exp)
     $scope.dataModel.data["summary"] = exp;
-    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){console.log("success");});
+    httpService.putApiEndpoint("/users/"+$scope.dataModel.id+".json", {user: $scope.dataModel}).success(function(){updateOthers();console.log("success");});
   };
 
 

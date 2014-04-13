@@ -30,11 +30,23 @@
 
   <h5>My Favorite Place to Ride ...</h5>
   <ul class="tm-list-small">
-    <select ng-model="selectedLocation" ng-change="changeLocation( selectedLocation )">
-      <option value="">I ride anywhere!</option>
-      <option ng-selected="user.data['location']['offroad']" value="offroad">Off Road</option>
-      <option ng-selected="user.data['location']['paved_trail']" value="paved_trail">Paved Trail</option>
-      <option ng-selected="user.data['location']['road']" value="road">Roads</option>
+      <label>
+        <input type="checkbox" ng-change="changeLocation()" ng-model="otherLocation">
+        I ride anywhere!
+      </label>
+      <label>
+        <input type="checkbox" ng-change="changeLocation()" ng-model="dataModel.data['location']['offroad']" ng-selected="dataModel.data['location']['offroad']">
+        Off Road
+      </label>
+      <label>
+        <input type="checkbox" ng-change="changeLocation()" ng-model="dataModel.data['location']['paved_trail']" ng-selected="dataModel.data['location']['paved_trail']">
+        Paved Trail
+      </label>
+      <label>
+        <input type="checkbox" ng-change="changeLocation()" ng-model="dataModel.data['location']['road']" ng-selected="dataModel.data['location']['road']">
+        Roads
+      </label>
+
     </select>
   </ul>
   <!-- .tm-list-small -->
@@ -43,12 +55,26 @@
 
   <h5>I Like to Ride For ...</h5>
   <ul class="tm-list-small">
-    <select ng-model="selectedLooking" ng-change="changeLooking( selectedLooking )">
-      <option value="">I don't need a reason to ride!</option>
-      <option ng-selected="user.data['looking_for']['training']" value="training">Training</option>
-      <option ng-selected="user.data['looking_for']['fun']" value="fun">Fun</option>
-      <option ng-selected="user.data['looking_for']['commuting']" value="commuting">Commuting</option>
-      <option ng-selected="user.data['looking_for']['destination']" value="destination">Destination</option>
+      <label>
+        <input type="checkbox" ng-change="changeLooking()" ng-model="otherLooking">
+        I don't need a reason to ride!
+      </label>
+      <label>
+        <input type="checkbox" ng-change="changeLooking()" ng-model="dataModel.data['looking_for']['training']" ng-selected="dataModel.data['looking_for']['training']">
+        Training
+      </label>
+      <label>
+        <input type="checkbox" ng-change="changeLooking()" ng-model="dataModel.data['looking_for']['fun']" ng-selected="dataModel.data['looking_for']['fun']">
+        Fun
+      </label>
+      <label>
+        <input type="checkbox" ng-change="changeLooking()" ng-model="dataModel.data['looking_for']['commuting']" ng-selected="dataModel.data['looking_for']['commuting']">
+        Commuting
+      </label>
+      <label>
+        <input type="checkbox" ng-change="changeLooking()" ng-model="dataModel.data['looking_for']['destination']" ng-selected="dataModel.data['looking_for']['destination']">
+        Destination
+      </label>
     </select>
   </ul>
   <!-- .tm-list-small -->
@@ -57,15 +83,35 @@
 
   <h5>My Bike Identity Is ...</h5>
   <ul class="tm-list-small">
-    <select ng-model="selectedScene" ng-change="changeScene( selectedScene )">
-      <option value="">I'll ride with anyone!</option>
-      <option ng-selected="user.data['scene']['weekend_warrior']" value="weekend_warrior">Weekend Warrior</option>
-      <option ng-selected="user.data['scene']['commuter']" value="commuter">Commuter</option>
-      <option ng-selected="user.data['scene']['mountain']" value="mountain">Mountain Biking</option>
-      <option ng-selected="user.data['scene']['fixies']" value="fixies">Fixed Gear</option>
-      <option ng-selected="user.data['scene']['social']" value="social">Social</option>
-      <option ng-selected="user.data['scene']['roadie']" value="roadie">Roadie</option>
-    </select>
+
+    <label>
+      <input type="checkbox" ng-change="changeScene()" ng-model="otherScene">
+      I'll Ride With Anyone!
+    </label>
+    <label>
+      <input type="checkbox" ng-change="changeScene()" ng-model="dataModel.data['scene']['weekend_warrior']" ng-selected="dataModel.data['scene']['weekend_warrior']">
+      Weekend Warrior
+    </label>
+    <label>
+      <input type="checkbox" ng-change="changeScene()" ng-model="dataModel.data['scene']['commuter']" ng-selected="dataModel.data['scene']['commuter']">
+      Commuter
+    </label>
+    <label>
+      <input type="checkbox" ng-change="changeScene()" ng-model="dataModel.data['scene']['mountain']" ng-selected="dataModel.data['scene']['mountain']">
+      Mountain Biking
+    </label>
+    <label>
+      <input type="checkbox" ng-change="changeScene()" ng-model="dataModel.data['scene']['fixies']" ng-selected="dataModel.data['scene']['fixies']">
+      Fixed Gear
+    </label>
+    <label>
+      <input type="checkbox" ng-change="changeScene()" ng-model="dataModel.data['scene']['social']" ng-selected="dataModel.data['scene']['social']">
+      Social
+    </label>
+    <label>
+      <input type="checkbox" ng-change="changeScene()" ng-model="dataModel.data['scene']['roadie']" ng-selected="dataModel.data['scene']['roadie']">
+      Roadie
+    </label>
   </ul>
   <!-- .tm-list-small -->
 
