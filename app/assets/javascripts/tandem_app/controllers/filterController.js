@@ -1,12 +1,13 @@
 TandemApp.controller("filterController", ["$scope", "httpService", "$rootScope", "$timeout", "$http", function($scope, httpService, $rootScope, $timeout, $http) {
 
-  // This is the main data model.
-  $scope.dataModel = {};
+  console.log("test");
 
+  // Initiate the HTTP request.
+  localStorage["filters"] = JSON.stringify( $rootScope.filters );
 
   $scope.evaluateDay = function(time) {
     if ( time == "Morning" ) {
-      return "tm-match-day-morning"
+      return "tm-match-day-morning";
     }
     else if ( time == "Afternoon" ) {
       return "tm-match-day-afternoon";
@@ -21,11 +22,6 @@ TandemApp.controller("filterController", ["$scope", "httpService", "$rootScope",
       return "tm-match-day-none";
     }
   };
-
-
-  // Initiate the HTTP request.
-  httpService.getApiEndpoint(apiEndpoint).success(getCatalogSuccess);
-  localStorage["filters"] = JSON.stringify( $rootScope.filters );
 
 }]);
 

@@ -1,4 +1,4 @@
-TandemApp.controller("filterController", ["$scope", "httpService", "$rootScope", "$timeout", "$http", function($scope, httpService, $rootScope, $timeout, $http) {
+TandemApp.controller("editProfileController", ["$scope", "httpService", "$rootScope", "$timeout", "$http", function($scope, httpService, $rootScope, $timeout, $http) {
 
   // This is the main data model.
   $scope.dataModel = {};
