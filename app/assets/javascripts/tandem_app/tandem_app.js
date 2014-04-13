@@ -27,12 +27,6 @@ TandemApp.run(["$rootScope", "$route", function($rootScope, $route) {
          "social":          true,
          "roadie":          true
       },
-      "goals": {
-         "training":        true,
-         "leisure":         true,
-         "commuting":       true,
-         "exercise":        true
-      },
       "skill":              "beginner",
       "speed":              "casual",
       "looking_for": {
