@@ -23,6 +23,10 @@ TandemApp.config(["$routeProvider", "$locationProvider", function($routeProvider
     controller: 'profileController',
     activetab: 'profile'
   }).
+  when('/profile/:user_id', {
+    templateUrl: '<%= asset_path("profile.html") %>',
+    controller: 'profileController'
+  }).
   when('/messages', {
     templateUrl: '<%= asset_path("messages.html") %>',
     activetab: 'messages'

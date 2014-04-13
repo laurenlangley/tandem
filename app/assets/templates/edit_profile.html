@@ -1,1 +1,145 @@
 <h1>Edit Profile</h1>
+
+
+
+
+<div id="tm-profile">
+
+  <header>
+    <div class="tm-match-image">
+      <img ng-src="{{user.data['image_large']}}" />
+    </div>
+    <!-- .tm-match-image -->
+    <div class="tm-match-data">
+      <h3>{{user.data["first_name"]}}</h3>
+      <h4><span>{{user.score}}% Match</span> | {{user.data["gender"]}}, {{user.data["age"]}}</h4>
+      <span class="tm-tag" ng-if="user.data['skill']['beginner'] == true">Beginner</span>
+      <span class="tm-tag" ng-if="user.data['skill']['intermediate'] == true">Intermediate</span>
+      <span class="tm-tag" ng-if="user.data['skill']['advanced'] == true">Advanced</span>
+      <span class="tm-tag" ng-if="
+      user.data['skill']['beginner'] == false && 
+      user.data['skill']['intermediate'] == false && 
+      user.data['skill']['advanced'] == false">Experience Unspecified</span>
+    </div>
+    <!-- .tm-match-data -->
+  </header>
+  <p>{{user.data["summary"]}}</p>
+
+  <hr />
+
+  <h5>My Favorite Places to Ride ...</h5>
+  <ul class="tm-list-small">
+    <li ng-if="user.data['location']['offroad'] == true">Off Road</li>
+    <li ng-if="user.data['location']['paved_trail'] == true">Paved Trail</li>
+    <li ng-if="user.data['location']['road'] == true">Road</li>
+    <li ng-if="
+      user.data['location']['offroad'] == false &&
+      user.data['location']['paved_trail'] == false &&
+      user.data['location']['road'] == false">I ride anywhere!</li>
+  </ul>
+  <!-- .tm-list-small -->
+
+  <hr />
+
+  <h5>I Like to Ride For ...</h5>
+  <ul class="tm-list-small">
+    <li ng-if="user.data['looking_for']['training'] == true">Training</li>
+    <li ng-if="user.data['looking_for']['fun'] == true">Fun</li>
+    <li ng-if="user.data['looking_for']['commuting'] == true">Commuting</li>
+    <li ng-if="user.data['looking_for']['destination'] == true">Destination</li>
+    <li ng-if="
+      user.data['looking_for']['training'] == false &&
+      user.data['looking_for']['fun'] == false &&
+      user.data['looking_for']['commuting'] == false &&
+      user.data['looking_for']['destination'] == false">I don't need a reason to ride!</li>
+  </ul>
+  <!-- .tm-list-small -->
+
+  <hr />
+
+  <h5>My Bike Identity Is ...</h5>
+  <ul class="tm-list-small">
+    <li ng-if="user.data['scene']['weekend_warrior'] == true">Weekend Warrior</li>
+    <li ng-if="user.data['scene']['commuter'] == true">Commuter</li>
+    <li ng-if="user.data['scene']['mountain'] == true">Mountain Biking</li>
+    <li ng-if="user.data['scene']['fixies'] == true">Fixed Gear</li>
+    <li ng-if="user.data['scene']['social'] == true">Social</li>
+    <li ng-if="user.data['scene']['roadie'] == true">Roadie</li>
+    <li ng-if="
+      user.data['scene']['commuter'] == false &&
+      user.data['scene']['weekend_warrior'] == false &&
+      user.data['scene']['mountain'] == false &&
+      user.data['scene']['fixies'] == false &&
+      user.data['scene']['social'] == false &&
+      user.data['scene']['roadie'] == false">I'll ride with anyone!</li>
+  </ul>
+  <!-- .tm-list-small -->
+
+  <hr />
+
+  <h5>My Bike Week Looks like ...</h5>
+
+  <ul class="tm-list-small">
+    <li>
+      <strong>Sundays:</strong> 
+      <span ng-if="user.data['availability']['sunday']">{{user.data['availability']['sunday']}}</span>
+      <span>Off day.</span>
+    </li>
+    <li>
+      <strong>Mondays:</strong> 
+      <span ng-if="user.data['availability']['monday']">{{user.data['availability']['monday']}}</span>
+      <span>Off day.</span>
+    </li>
+    <li>
+      <strong>Tuesdays:</strong> 
+      <span ng-if="user.data['availability']['tuesday']">{{user.data['availability']['tuesday']}}</span>
+      <span>Off day.</span>
+    </li>
+    <li>
+      <strong>Wednesdays:</strong> 
+      <span ng-if="user.data['availability']['wednesday']">{{user.data['availability']['wednesday']}}</span>
+      <span>Off day.</span>
+    </li>
+    <li>
+      <strong>Thursdays:</strong> 
+      <span ng-if="user.data['availability']['thursday']">{{user.data['availability']['thursday']}}</span>
+      <span>Off day.</span>
+    </li>
+    <li>
+      <strong>Fridays:</strong> 
+      <span ng-if="user.data['availability']['friday']">{{user.data['availability']['friday']}}</span>
+      <span>Off day.</span>
+    </li>
+    <li>
+      <strong>Saturdays:</strong> 
+      <span ng-if="user.data['availability']['saturday']">{{user.data['availability']['saturday']}}</span>
+      <span>Off day.</span>
+    </li>
+  </ul>
+  <!-- .tm-list-small -->
+
+  <hr />
+
+  <h5>Here's How I Introduce Myself ...</h5>
+
+  <ul class="tm-list-small">
+    <li ng-if="user.data['summary']">{{user.data['summary']}}</li>
+    <li ng-if="!user.data['summary']">I'll fill this out later.</li>
+  </ul>
+  <!-- .tm-list-small -->
+
+</div>
+<!-- #tm-profile -->
+
+
+
+
+
+
+
+
+
+
+
+
+

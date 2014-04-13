@@ -1,4 +1,4 @@
-TandemApp.controller("profileController", ["$scope", "httpService", "$rootScope", "$timeout", "$http", function($scope, httpService, $rootScope, $timeout, $http) {
+TandemApp.controller("profileController", ["$scope", "httpService", "$rootScope", "$timeout", "$http", "$route", function($scope, httpService, $rootScope, $timeout, $http, $route) {
 
   // This is the main data model.
   $scope.user = null;
@@ -21,8 +21,11 @@ TandemApp.controller("profileController", ["$scope", "httpService", "$rootScope"
     }
   };
 
-  // This is the string that defines where the JSON endpoint resides.
-  var apiEndpoint = '/users/current.json';
+  var user_id = $route.current.params.user_id; 
+  if( user_id )
+    var apiEndpoint = '/users/' + user_id + '.json';  
+  else
+    var apiEndpoint = '/users/current.json';
 
   // This is the callback function that executes if the HTTP requests returns successfully.
   var getUserSuccess = function(payload, status) {
