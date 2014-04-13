@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     json = JSON.parse( u.json )
     json[:gender]   = auth.extra.raw_info.gender if auth.extra.raw_info.gender.present?
     json[:first_name] = auth.info.first_name if auth.info.first_name.present?
-    json[:location] = auth.info.location if auth.info.location.present?
+    json[:city] = auth.info.location if auth.info.location.present?
 
     begin
       d = Date.parse( auth.extra.raw_info.birthday )
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
     {
       :age    => 0,
       :first_name => "",
-      :location => "",
+      :city => "",
       :gender => "",
       :location => {
         :offroad          => false,
