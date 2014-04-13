@@ -124,6 +124,27 @@
   </ul>
   <!-- .tm-filter-speed -->
 
+  <h5>Filter Goals(s):</h5>
+  <ul class="tm-filter-goals">
+    <li ng-class="{ 'tm-filter-true' : filters['goals']['training'] == true }" ng-click="filters['goals']['training'] = !filters['goals']['training']">
+      <span class="tm-filter-goals-training">&nbsp;</span>
+      Training
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['goals']['leisure'] == true }" ng-click="filters['goals']['leisure'] = !filters['goals']['leisure']">
+      <span class="tm-filter-goals-leisure">&nbsp;</span>
+      Leisure
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['goals']['commuting'] == true }" ng-click="filters['goals']['commuting'] = !filters['goals']['commuting']">
+      <span class="tm-filter-goals-commuting">&nbsp;</span>
+      Commuting
+    </li>
+    <li ng-class="{ 'tm-filter-true' : filters['goals']['exercise'] == true }" ng-click="filters['goals']['exercise'] = !filters['goals']['exercise']">
+      <span class="tm-filter-goals-exercise">&nbsp;</span>
+      Exercise
+    </li>
+  </ul>
+  <!-- .tm-filter-location -->
+
 </div>
 <!-- #tm-filters -->
 
