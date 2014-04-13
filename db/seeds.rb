@@ -12,20 +12,20 @@ valid_availabilities = ["", "Morning", "Afternoon", "Evening"]
 
 25.times do |i|
   User.create({
-    :email  => Faker::Internet.safe_email,
-    :name   => Faker::Name.name,
-    :image  => Faker::Avatar.image,
-    :json   => {
-      :age    => ( rand(25) + 18 ),
-      :first_name => "",
-      :city => "",
-      :gender => ( rand(2) == 0 ? "male" : "female" ),
-      :location => {
+    :email      => Faker::Internet.safe_email,
+    :name       => Faker::Name.name,
+    :image      => Faker::Avatar.image,
+    :json       => {
+      :age          => ( rand(25) + 18 ),
+      :first_name   => Faker::Name.first_name,
+      :city         => Faker::Address.city + " " + Faker::Address.state,
+      :gender       => ( rand(2) == 0 ? "male" : "female" ),
+      :location     => {
         :offroad          => rand(2) == 0,
         :paved_trail      => rand(2) == 0,
         :road             => rand(2) == 0
       },
-      :scene => {
+      :scene        => {
         :weekend_warrior  => rand(2) == 0,
         :commuter         => rand(2) == 0,
         :mountain         => rand(2) == 0,
@@ -33,12 +33,12 @@ valid_availabilities = ["", "Morning", "Afternoon", "Evening"]
         :social           => rand(2) == 0,
         :roadie           => rand(2) == 0
       },
-      :skill  => {
+      :skill        => {
         :beginner         => false,
         :intermediate     => true,
         :advanced         => false
       },
-      :looking_for => {
+      :looking_for  => {
         :training         => rand(2) == 0,
         :fun              => rand(2) == 0,
         :commuting        => rand(2) == 0,

@@ -63,16 +63,16 @@ class User < ActiveRecord::Base
 
   def self.default_schema
     {
-      :age    => 0,
-      :first_name => "",
-      :city => "",
-      :gender => "",
-      :location => {
+      :age          => 0,
+      :first_name   => "",
+      :city         => "",
+      :gender       => "",
+      :location     => {
         :offroad          => false,
         :paved_trail      => false,
         :road             => false
       },
-      :scene => {
+      :scene        => {
         :weekend_warrior  => false,
         :commuter         => false,
         :mountain         => false,
@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
         :social           => false,
         :roadie           => false
       },
-      :skill  => {
+      :skill        => {
         :beginner         => false,
         :intermediate     => false,
         :advanced         => false
