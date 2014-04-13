@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     u.name          = auth.info.name   
     u.image         = auth.info.image 
 
-    u.json          = "{}" if u.json.nil?
+    u.json          = User.default_schema if u.json.nil?
     json = JSON.parse( u.json )
     json[:gender]   = auth.extra.raw_info.gender if auth.extra.raw_info.gender.present?
     json[:first_name] = auth.info.first_name if auth.info.first_name.present?
@@ -59,5 +59,48 @@ class User < ActiveRecord::Base
     
     u
     
+  end
+
+  def self.default_schema
+    {
+      :age    => 0,
+      :first_name => "",
+      :location => "",
+      :gender => "",
+      :location => {
+        :offroad          => false,
+        :paved_trail      => false,
+        :road             => false
+      },
+      :scene => {
+        :weekend_warrior  => false,
+        :commuter         => false,
+        :mountain         => false,
+        :fixies           => false,
+        :social           => false,
+        :roadie           => false
+      },
+      :skill  => {
+        :beginner         => false,
+        :intermediate     => false,
+        :advanced         => false
+      },
+      :looking_for => {
+        :training         => false,
+        :fun              => false,
+        :commuting        => false,
+        :destination      => false
+      },
+      :availability => {
+        :sunday     => "",
+        :monday     => "",
+        :tuesday    => "",
+        :wednesday  => "",
+        :thursday   => "",
+        :friday     => "",
+        :saturday   => ""
+      },
+      :summary => ""
+    }.to_json
   end
 end
