@@ -757,7 +757,6 @@ ol#tm-matches > li.tm-match,
   background: $white;
   font-size: 14px;
   line-height: 25px;
-  overflow-x: hidden;
   @include border-radius(6px);
   @include box-shadow(0 1px 3px rgba(0, 0, 0, .15));
   > p {
