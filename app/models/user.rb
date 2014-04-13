@@ -31,8 +31,7 @@ class User < ActiveRecord::Base
     ( 100 * (points / total.to_f) ).round
   end
 
-  def self.find_for_facebook_oauth(auth)\
-
+  def self.find_for_facebook_oauth(auth)
     u = User.where( auth.slice(:provider, :uid) ).first_or_create do |user|
       user.provider   = auth.provider
       user.uid        = auth.uid
@@ -42,9 +41,11 @@ class User < ActiveRecord::Base
     u.name          = auth.info.name   
     u.image         = auth.info.image 
 
-    u.json          = "{}" if u.json.nil?
+    u.json          = User.default_schema if u.json.nil?
     json = JSON.parse( u.json )
     json[:gender]   = auth.extra.raw_info.gender if auth.extra.raw_info.gender.present?
+    json[:first_name] = auth.info.first_name if auth.info.first_name.present?
+    json[:location] = auth.info.location if auth.info.location.present?
 
     begin
       d = Date.parse( auth.extra.raw_info.birthday )
@@ -58,5 +59,48 @@ class User < ActiveRecord::Base
     
     u
     
+  end
+
+  def self.default_schema
+    {
+      :age    => 0,
+      :first_name => "",
+      :location => "",
+      :gender => "",
+      :location => {
+        :offroad          => false,
+        :paved_trail      => false,
+        :road             => false
+      },
+      :scene => {
+        :weekend_warrior  => false,
+        :commuter         => false,
+        :mountain         => false,
+        :fixies           => false,
+        :social           => false,
+        :roadie           => false
+      },
+      :skill  => {
+        :beginner         => false,
+        :intermediate     => false,
+        :advanced         => false
+      },
+      :looking_for => {
+        :training         => false,
+        :fun              => false,
+        :commuting        => false,
+        :destination      => false
+      },
+      :availability => {
+        :sunday     => "",
+        :monday     => "",
+        :tuesday    => "",
+        :wednesday  => "",
+        :thursday   => "",
+        :friday     => "",
+        :saturday   => ""
+      },
+      :summary => ""
+    }.to_json
   end
 end
