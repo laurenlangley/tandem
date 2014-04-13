@@ -1,8 +1,5 @@
 Tandem::Application.routes.draw do
   root 'home#index'
-  get "iphone", :to => "home#iphone", :as => :iphone
-
-  get "app", :to => "home#app"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
